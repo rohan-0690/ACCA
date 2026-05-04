@@ -281,16 +281,130 @@
     .pulse-on-hover:hover {
       animation: pulse 0.6s ease-in-out;
     }
+
+    /* Enhanced styling for new sections */
+    .warning-box {
+      background: #fef3c7;
+      border-left: 4px solid #f59e0b;
+      padding: 14px 20px;
+      border-radius: 6px;
+      margin: 16px 0;
+      color: #92400e;
+      opacity: 0;
+      animation: slideInRight 0.8s ease-out 0.8s forwards;
+      transition: all 0.3s ease;
+    }
+    
+    .warning-box:hover {
+      background: #fde68a;
+      transform: translateX(5px);
+      box-shadow: 0 4px 12px rgba(245, 158, 11, 0.2);
+    }
+
+    .info-box {
+      background: #dbeafe;
+      border-left: 4px solid #3b82f6;
+      padding: 14px 20px;
+      border-radius: 6px;
+      margin: 16px 0;
+      color: #1e40af;
+      opacity: 0;
+      animation: slideInRight 0.8s ease-out 0.8s forwards;
+      transition: all 0.3s ease;
+    }
+    
+    .info-box:hover {
+      background: #bfdbfe;
+      transform: translateX(5px);
+      box-shadow: 0 4px 12px rgba(59, 130, 246, 0.2);
+    }
+
+    .formula-box {
+      background: #f3e8ff;
+      border: 2px solid #8b5cf6;
+      padding: 20px;
+      border-radius: 8px;
+      margin: 20px 0;
+      text-align: center;
+      font-size: 1.1rem;
+      font-weight: bold;
+      color: #5b21b6;
+      opacity: 0;
+      animation: fadeInUp 0.8s ease-out 0.9s forwards;
+      transition: all 0.3s ease;
+    }
+    
+    .formula-box:hover {
+      background: #ede9fe;
+      transform: scale(1.02);
+      box-shadow: 0 4px 16px rgba(139, 92, 246, 0.3);
+    }
+
+    .step-box {
+      background: #f0f9ff;
+      border: 1px solid #0ea5e9;
+      padding: 16px;
+      border-radius: 8px;
+      margin: 12px 0;
+      opacity: 0;
+      animation: fadeInUp 0.6s ease-out 0.7s forwards;
+      transition: all 0.3s ease;
+    }
+    
+    .step-box:hover {
+      background: #e0f2fe;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(14, 165, 233, 0.2);
+    }
+
+    .comparison-table {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 16px;
+      margin: 20px 0;
+      opacity: 0;
+      animation: fadeInUp 0.8s ease-out 0.9s forwards;
+    }
+
+    .comparison-card {
+      background: #f8fafc;
+      border: 2px solid #e2e8f0;
+      padding: 16px;
+      border-radius: 8px;
+      text-align: center;
+      transition: all 0.3s ease;
+    }
+    
+    .comparison-card:hover {
+      border-color: #4f46e5;
+      transform: translateY(-4px);
+      box-shadow: 0 8px 20px rgba(79, 70, 229, 0.15);
+    }
+
+    .emoji {
+      font-size: 1.2em;
+      margin-right: 8px;
+    }
   </style>
 </head>
 <body>
   <div class="concept-page">
-    <h1 class="pulse-on-hover">Weighted Average Cost of Capital (WACC)</h1>
-    <p><strong>WACC</strong> stands for <strong>Weighted Average Cost of Capital</strong>. It represents the <strong>average return a company must pay to all its investors</strong> — both debt holders and equity shareholders — for using their funds.</p>
-    <p>It's used as the <strong>discount rate</strong> to evaluate investments and projects.</p>
+    <h1 class="pulse-on-hover">Risk-Adjusted WACC: Complete Guide</h1>
+    
+    <hr />
+    <h1><span class="emoji">📊</span>What WACC Really Represents</h1>
+    
+    <div class="formula-box">
+      WACC = (E/V) × Re + (D/V) × Rd × (1 − T)
+    </div>
+    
+    <p><strong>WACC</strong> stands for <strong>Weighted Average Cost of Capital</strong>. It represents:</p>
+    <ul>
+      <li><span class="emoji">👉</span><strong>The minimum return required by investors</strong> (equity + debt)</li>
+      <li><span class="emoji">👉</span><strong>Based on the firm's current risk level</strong></li>
+    </ul>
 
-    <h2>Formula</h2>
-    <p><code>WACC = (E/V) × Re + (D/V) × Rd × (1 − T)</code></p>
+    <h3>Formula Components</h3>
     <ul>
       <li><strong>E</strong> = Market value of equity</li>
       <li><strong>D</strong> = Market value of debt</li>
@@ -300,69 +414,202 @@
       <li><strong>T</strong> = Tax rate</li>
     </ul>
 
-    <hr />
-    <h1>The Problem with Normal WACC</h1>
-    <p>Companies usually calculate one overall WACC. For example, a company's WACC might be <strong>10%</strong>. But not all projects have the same risk.</p>
-    <h3>Project Comparison</h3>
-    <ul>
-      <li><strong>Project A:</strong> Low risk, stable returns</li>
-      <li><strong>Project B:</strong> High risk, uncertain returns</li>
-    </ul>
-    <p>Using 10% for both could lead to poor decisions — because each project carries a different level of risk.</p>
-
-    <h2>→ Solution: Risk-Adjusted WACC</h2>
-    <p><strong>Risk-Adjusted WACC</strong> modifies the standard WACC to reflect the specific risk of a project.</p>
-    <blockquote>Higher project risk → Higher discount rate<br />Lower project risk → Lower discount rate</blockquote>
+    <div class="warning-box">
+      <strong>Hidden assumption:</strong> All future projects have the same risk as the firm<br>
+      <strong>That assumption is where things break.</strong> ⚠️
+    </div>
 
     <hr />
-    <h1>Why Adjust WACC?</h1>
-    <p>Because investors expect <strong>higher returns for higher risk</strong>. Ignoring this leads to valuation mistakes:</p>
+    <h1><span class="emoji">🔥</span>The Core Problem</h1>
+    
+    <p>Companies don't do identical projects. They do:</p>
     <ul>
-      <li><strong>If WACC is too low:</strong> Cash flows seem larger → You might accept a bad project 😬</li>
-      <li><strong>If WACC is too high:</strong> Cash flows seem smaller → You might reject a good project ❌</li>
+      <li><strong>Safer expansions</strong></li>
+      <li><strong>Risky new ventures</strong></li>
+      <li><strong>Different industries</strong></li>
     </ul>
+
+    <p>If you use the same WACC:</p>
+    <div class="comparison-table">
+      <div class="comparison-card">
+        <h4>Risky Projects</h4>
+        <p>Look artificially attractive</p>
+        <span style="font-size: 2em;">😬</span>
+      </div>
+      <div class="comparison-card">
+        <h4>Safe Projects</h4>
+        <p>Look unattractive</p>
+        <span style="font-size: 2em;">❌</span>
+      </div>
+      <div class="comparison-card">
+        <h4>Result</h4>
+        <p>Bad capital allocation</p>
+        <span style="font-size: 2em;">💸</span>
+      </div>
+    </div>
+
+    <blockquote><span class="emoji">👉</span>This leads to bad capital allocation</blockquote>
 
     <hr />
-    <h1>How to Calculate Risk-Adjusted WACC</h1>
-    <p>The main adjustment happens in the <strong>Cost of Equity (Re)</strong>.</p>
-    <p>The <strong>CAPM Formula</strong>: <code>Re = Rf + β × (Rm − Rf)</code></p>
+    <h1><span class="emoji">🎯</span>What Risk-Adjusted WACC Actually Means</h1>
+    
+    <div class="info-box">
+      <strong>Definition (no textbook fluff):</strong><br>
+      Risk-adjusted WACC = WACC recalculated using a cost of equity that reflects the project's risk, not the firm's average risk.
+    </div>
+
+    <hr />
+    <h1><span class="emoji">⚙️</span>How You Adjust It (Real Mechanism)</h1>
+    
+    <p>The adjustment happens through <strong>cost of equity</strong>, using the Capital Asset Pricing Model (CAPM):</p>
+    
+    <div class="formula-box">
+      Re = Rf + β × (Rm − Rf)
+    </div>
+
+    <h3>What actually changes?</h3>
+    <p><span class="emoji">👉</span><strong>Beta (β)</strong></p>
+
+    <h3><span class="emoji">🎯</span>Why Beta?</h3>
     <ul>
-      <li><strong>Rf:</strong> Risk-free rate</li>
-      <li><strong>β (Beta):</strong> Measure of project's risk</li>
-      <li><strong>Rm − Rf:</strong> Market risk premium</li>
+      <li>Beta measures <strong>systematic risk</strong> (market risk)</li>
+      <li>Higher beta = more volatile = more required return</li>
     </ul>
 
-    <h3>Understanding Beta</h3>
     <table>
-      <thead><tr><th>Beta</th><th>Meaning</th></tr></thead>
+      <thead><tr><th>Beta Value</th><th>Risk Level</th><th>Meaning</th></tr></thead>
       <tbody>
-        <tr><td>β = 1</td><td>Average market risk</td></tr>
-        <tr><td>β &lt; 1</td><td>Lower risk</td></tr>
-        <tr><td>β > 1</td><td>Higher risk</td></tr>
+        <tr><td>β = 1</td><td>Average</td><td>Same risk as market</td></tr>
+        <tr><td>β < 1</td><td>Lower</td><td>Less risky than market</td></tr>
+        <tr><td>β > 1</td><td>Higher</td><td>More risky than market</td></tr>
       </tbody>
     </table>
 
-    <h3>Example 1</h3>
-    <p><strong>Risk-free rate:</strong> 4% &nbsp;&nbsp; <strong>Market premium:</strong> 6%</p>
-    <p>For <strong>Project 1 (β = 1):</strong> Re = 4 + (1×6) = <strong>10%</strong></p>
-    <p>For <strong>Project 2 (β = 1.5):</strong> Re = 4 + (1.5×6) = <strong>13%</strong></p>
-    <p>Higher Beta → Higher Cost of Equity → Higher WACC.</p>
+    <hr />
+    <h1><span class="emoji">🧩</span>Step-by-Step Process (What analysts actually do)</h1>
+
+    <div class="step-box">
+      <h3>Step 1: Identify project risk</h3>
+      <p>Is it riskier or safer than current business?</p>
+    </div>
+
+    <div class="step-box">
+      <h3>Step 2: Estimate project beta</h3>
+      <p><strong>Options:</strong></p>
+      <ul>
+        <li>Use pure-play companies in same industry</li>
+        <li>Adjust (unlever → relever beta)</li>
+      </ul>
+    </div>
+
+    <div class="step-box">
+      <h3>Step 3: Calculate new cost of equity</h3>
+      <p>Using CAPM formula</p>
+    </div>
+
+    <div class="step-box">
+      <h3>Step 4: Recalculate WACC</h3>
+      <p><strong>Keep:</strong></p>
+      <ul>
+        <li>Debt cost (usually same unless risk is extreme)</li>
+        <li>Capital structure (or adjust if needed)</li>
+      </ul>
+    </div>
+
+    <div class="step-box">
+      <h3>Step 5: Use this WACC for valuation</h3>
+      <ul>
+        <li>Discount cash flows</li>
+        <li>Compare with IRR</li>
+      </ul>
+    </div>
 
     <hr />
-    <h1>Risk-Adjusted WACC Example</h1>
-    <ul>
-      <li>Equity = 60%</li>
-      <li>Debt = 40%</li>
-      <li>Cost of Debt = 8%</li>
-      <li>Tax = 30%</li>
-      <li>Cost of Equity (risky project) = 13%</li>
-    </ul>
-    <p>Equity portion = 60% × 13% = <strong>7.8%</strong></p>
-    <p>Debt portion = 40% × 8% × (1 − 0.30) = <strong>2.24%</strong></p>
-    <p><strong>WACC = 7.8 + 2.24 = 10.04%</strong></p>
+    <h1><span class="emoji">📊</span>Full Example (No shortcuts)</h1>
 
-    <h3>Decision Example</h3>
-    <p>Project IRR = 9%<br />Normal WACC (8%) → Accept ✅<br />Risk-Adjusted WACC (10.04%) → Reject ❌</p>
+    <h3>Given:</h3>
+    <ul>
+      <li><strong>Capital structure:</strong> 60% equity, 40% debt</li>
+      <li><strong>Cost of debt:</strong> 8%</li>
+      <li><strong>Tax rate:</strong> 30%</li>
+    </ul>
+
+    <h3>Market Conditions:</h3>
+    <ul>
+      <li><strong>Risk-free rate:</strong> 4%</li>
+      <li><strong>Market premium:</strong> 6%</li>
+    </ul>
+
+    <h3>Case A: Normal project (β = 1)</h3>
+    <p><code>Re = 4 + 1(6) = 10%</code></p>
+    <p><code>WACC = 0.6(10) + 0.4(8)(0.7) = 6 + 2.24 = 8.24%</code></p>
+
+    <h3>Case B: Risky project (β = 1.8)</h3>
+    <p><code>Re = 4 + 1.8(6) = 14.8%</code></p>
+    <p><code>WACC = 0.6(14.8) + 0.4(8)(0.7) = 8.88 + 2.24 = 11.12%</code></p>
+
+    <div class="info-box">
+      <strong><span class="emoji">🔍</span>What changed?</strong><br>
+      Only beta → cost of equity → WACC
+    </div>
+
+    <hr />
+    <h1><span class="emoji">💣</span>Why This Matters (Real Decision Impact)</h1>
+
+    <p><strong>Project IRR = 10%</strong></p>
+
+    <table>
+      <thead><tr><th>Method</th><th>WACC Used</th><th>Decision</th></tr></thead>
+      <tbody>
+        <tr><td>Normal WACC</td><td>8.24%</td><td>✅ Accept</td></tr>
+        <tr><td>Risk-Adjusted WACC</td><td>11.12%</td><td>❌ Reject</td></tr>
+      </tbody>
+    </table>
+
+    <blockquote><span class="emoji">👉</span>One wrong assumption → wrong investment</blockquote>
+
+    <hr />
+    <h1><span class="emoji">⚠️</span>Common Mistakes (You need to avoid these)</h1>
+
+    <div class="warning-box">
+      <h4>1. Using one WACC for everything</h4>
+      <p>Lazy and wrong.</p>
+    </div>
+
+    <div class="warning-box">
+      <h4>2. Ignoring beta estimation</h4>
+      <p>You can't just "guess" risk.</p>
+    </div>
+
+    <div class="warning-box">
+      <h4>3. Adjusting discount rate randomly</h4>
+      <p>Risk adjustment must be systematic (CAPM)</p>
+    </div>
+
+    <div class="warning-box">
+      <h4>4. Forgetting capital structure changes</h4>
+      <p>Sometimes projects have different financing</p>
+    </div>
+
+    <hr />
+    <h1><span class="emoji">🧠</span>Alternative Approach (Advanced Insight)</h1>
+
+    <p>Instead of adjusting WACC, some analysts adjust:</p>
+    <p><span class="emoji">👉</span><strong>Cash flows (certainty equivalents)</strong></p>
+
+    <p><strong>But in practice:</strong></p>
+    <ul>
+      <li>Adjusting WACC is more common</li>
+      <li>Easier to implement</li>
+    </ul>
+
+    <hr />
+    <h1><span class="emoji">🎯</span>Final Understanding</h1>
+
+    <div class="info-box">
+      <strong>Risk-adjusted WACC is not a new formula.</strong><br><br>
+      It's: <strong>The same WACC formula, applied with a different cost of equity that reflects project-specific risk</strong>
+    </div>
 
     <hr />
     <h1>When to Use Risk-Adjusted WACC</h1>
@@ -390,13 +637,13 @@
     </ul>
 
     <hr />
-    <h2>Easy Analogy</h2>
+    <h2><span class="emoji">💡</span>Easy Analogy</h2>
     <p>Think of lending money. Would you charge the same interest to a trusted friend and a stranger with bad credit? Of course not! Riskier borrower → Higher interest rate. That's exactly what Risk-Adjusted WACC does for projects.</p>
 
     <h2>Final Definition</h2>
     <p><strong>Risk-Adjusted WACC is the weighted average cost of capital adjusted to reflect a project's specific risk level, ensuring accurate investment evaluation and better decisions.</strong></p>
 
-    <h3 class="animate-on-scroll">The Concept Chain</h3>
+    <h3 class="animate-on-scroll"><span class="emoji">🔗</span>The Concept Chain</h3>
     <p class="animate-on-scroll"><strong>Project Risk → Beta → Cost of Equity → WACC → Investment Decision</strong></p>
   </div>
 
