@@ -385,6 +385,170 @@
       font-size: 1.2em;
       margin-right: 8px;
     }
+
+    /* Navigation and Practice Questions Styling */
+    .navigation-section {
+      text-align: center;
+      padding: 30px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      border-radius: 12px;
+      margin: 30px 0;
+      color: white;
+      opacity: 0;
+      animation: fadeInUp 0.8s ease-out 1.2s forwards;
+    }
+
+    .practice-button {
+      background: linear-gradient(135deg, #ff6b6b 0%, #ee5a24 100%);
+      color: white;
+      border: none;
+      padding: 15px 30px;
+      font-size: 1.1rem;
+      font-weight: bold;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      margin-top: 15px;
+      box-shadow: 0 4px 15px rgba(238, 90, 36, 0.3);
+    }
+
+    .practice-button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px rgba(238, 90, 36, 0.4);
+      background: linear-gradient(135deg, #ee5a24 0%, #ff6b6b 100%);
+    }
+
+    .practice-section {
+      margin-top: 40px;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.6s ease-out;
+    }
+
+    .practice-section.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .section-header {
+      padding: 20px;
+      border-radius: 8px;
+      margin: 30px 0 20px 0;
+      text-align: center;
+      font-weight: bold;
+    }
+
+    .basic-section {
+      background: linear-gradient(135deg, #74b9ff 0%, #0984e3 100%);
+      color: white;
+    }
+
+    .risk-section {
+      background: linear-gradient(135deg, #fd79a8 0%, #e84393 100%);
+      color: white;
+    }
+
+    .trap-section {
+      background: linear-gradient(135deg, #fdcb6e 0%, #e17055 100%);
+      color: white;
+    }
+
+    .exam-section {
+      background: linear-gradient(135deg, #6c5ce7 0%, #a29bfe 100%);
+      color: white;
+    }
+
+    .question-box {
+      background: #f8f9fa;
+      border: 2px solid #e9ecef;
+      border-radius: 10px;
+      padding: 25px;
+      margin: 20px 0;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .question-box::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 4px;
+      height: 100%;
+      background: linear-gradient(135deg, #74b9ff 0%, #0984e3 100%);
+    }
+
+    .question-box:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+      border-color: #74b9ff;
+    }
+
+    .trap-question::before {
+      background: linear-gradient(135deg, #fdcb6e 0%, #e17055 100%);
+    }
+
+    .exam-question::before {
+      background: linear-gradient(135deg, #6c5ce7 0%, #a29bfe 100%);
+    }
+
+    .task-box {
+      background: linear-gradient(135deg, #00b894 0%, #00cec9 100%);
+      color: white;
+      padding: 15px;
+      border-radius: 8px;
+      margin-top: 15px;
+      font-weight: bold;
+    }
+
+    .task-box ol {
+      margin: 10px 0 0 20px;
+      color: white;
+    }
+
+    .completion-box {
+      background: linear-gradient(135deg, #00b894 0%, #00cec9 100%);
+      color: white;
+      padding: 30px;
+      border-radius: 12px;
+      text-align: center;
+      margin: 40px 0;
+    }
+
+    .back-to-top-btn {
+      background: rgba(255, 255, 255, 0.2);
+      color: white;
+      border: 2px solid white;
+      padding: 12px 25px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: all 0.3s ease;
+      margin-top: 15px;
+    }
+
+    .back-to-top-btn:hover {
+      background: white;
+      color: #00b894;
+      transform: translateY(-2px);
+    }
+
+    /* Animation for showing practice section */
+    @keyframes slideDown {
+      from {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .practice-section.show {
+      animation: slideDown 0.6s ease-out;
+    }
   </style>
 </head>
 <body>
@@ -645,6 +809,143 @@
 
     <h3 class="animate-on-scroll"><span class="emoji">🔗</span>The Concept Chain</h3>
     <p class="animate-on-scroll"><strong>Project Risk → Beta → Cost of Equity → WACC → Investment Decision</strong></p>
+
+    <hr />
+    <div class="navigation-section">
+      <h2><span class="emoji">🎯</span>Ready to Test Your Knowledge?</h2>
+      <p>Now that you understand Risk-Adjusted WACC, practice with real exam-style questions!</p>
+      <button id="practiceBtn" class="practice-button">
+        <span class="emoji">📝</span> Practice Questions
+      </button>
+    </div>
+
+    <!-- Practice Questions Section (Initially Hidden) -->
+    <div id="practiceSection" class="practice-section" style="display: none;">
+      <hr />
+      <h1><span class="emoji">📝</span>Practice Questions</h1>
+      
+      <div class="section-header basic-section">
+        <h2><span class="emoji">📊</span>Section A: Basic WACC</h2>
+      </div>
+
+      <div class="question-box">
+        <h3>Q1 — Basic WACC</h3>
+        <p><strong>A company has:</strong></p>
+        <ul>
+          <li>Market value of equity = ₹600 million</li>
+          <li>Market value of debt = ₹400 million</li>
+          <li>Cost of equity = 12%</li>
+          <li>Cost of debt = 8%</li>
+          <li>Corporate tax rate = 30%</li>
+        </ul>
+        <div class="task-box">
+          <span class="emoji">👉</span> <strong>Calculate WACC</strong>
+        </div>
+      </div>
+
+      <div class="question-box">
+        <h3>Q2 — CAPM Application</h3>
+        <p><strong>Given:</strong></p>
+        <ul>
+          <li>Risk-free rate = 5%</li>
+          <li>Market risk premium = 7%</li>
+          <li>Beta = 1.4</li>
+        </ul>
+        <div class="task-box">
+          <span class="emoji">👉</span> <strong>Calculate cost of equity</strong>
+        </div>
+      </div>
+
+      <div class="section-header risk-section">
+        <h2><span class="emoji">🔥</span>Section B: Risk-Adjusted WACC</h2>
+      </div>
+
+      <div class="question-box">
+        <h3>Q3 — Adjusting for Project Risk</h3>
+        <p><strong>A company's current beta = 1<br>New project beta = 1.8</strong></p>
+        <p><strong>Other data:</strong></p>
+        <ul>
+          <li>Risk-free rate = 4%</li>
+          <li>Market premium = 6%</li>
+          <li>Debt = 40%, Equity = 60%</li>
+          <li>Cost of debt = 9%</li>
+          <li>Tax = 30%</li>
+        </ul>
+        <div class="task-box">
+          <span class="emoji">👉</span> <strong>Tasks:</strong>
+          <ol>
+            <li>Calculate new cost of equity</li>
+            <li>Calculate risk-adjusted WACC</li>
+          </ol>
+        </div>
+      </div>
+
+      <div class="question-box">
+        <h3>Q4 — Decision Making</h3>
+        <p><strong>Using your answer from Q3:</strong></p>
+        <p>A project has: <strong>IRR = 11%</strong></p>
+        <div class="task-box">
+          <span class="emoji">👉</span> <strong>Should the company accept or reject?</strong><br>
+          <span class="emoji">👉</span> <strong>Justify clearly.</strong>
+        </div>
+      </div>
+
+      <div class="section-header trap-section">
+        <h2><span class="emoji">⚠️</span>Section C: Trap Questions (These fail students)</h2>
+      </div>
+
+      <div class="question-box trap-question">
+        <h3>Q5 — Concept Trap</h3>
+        <p>A firm uses its overall WACC of 10% for all projects.</p>
+        <p>A new project is <strong>significantly riskier</strong> than existing operations.</p>
+        <div class="task-box">
+          <span class="emoji">👉</span> <strong>Explain why this is incorrect and what should be done instead.</strong>
+        </div>
+      </div>
+
+      <div class="question-box trap-question">
+        <h3>Q6 — Debt Confusion</h3>
+        <p>A student says:</p>
+        <blockquote>"When adjusting for risk, we should increase both cost of equity and cost of debt."</blockquote>
+        <div class="task-box">
+          <span class="emoji">👉</span> <strong>Is this correct? Explain.</strong>
+        </div>
+      </div>
+
+      <div class="section-header exam-section">
+        <h2><span class="emoji">🧠</span>Section D: Exam-Level Application</h2>
+      </div>
+
+      <div class="question-box exam-question">
+        <h3>Q7 — Full Scenario</h3>
+        <p>A company is evaluating a new project in a <strong>different industry</strong>.</p>
+        <p><strong>Data:</strong></p>
+        <ul>
+          <li>Risk-free rate = 3%</li>
+          <li>Market premium = 8%</li>
+          <li>Comparable company beta (asset beta) = 1.2</li>
+          <li>Target capital structure: 50% debt, 50% equity</li>
+          <li>Cost of debt = 7%</li>
+          <li>Tax rate = 25%</li>
+        </ul>
+        <div class="task-box">
+          <span class="emoji">👉</span> <strong>Tasks:</strong>
+          <ol>
+            <li>Calculate cost of equity (assume beta = 1.2 for simplicity)</li>
+            <li>Calculate WACC</li>
+            <li>Explain why this WACC is different from the company's existing WACC</li>
+          </ol>
+        </div>
+      </div>
+
+      <div class="completion-box">
+        <h3><span class="emoji">🎉</span>Congratulations!</h3>
+        <p>You've completed all the practice questions. These cover the essential concepts tested in exams and used in real-world financial analysis.</p>
+        <button onclick="scrollToTop()" class="back-to-top-btn">
+          <span class="emoji">⬆️</span> Back to Top
+        </button>
+      </div>
+    </div>
   </div>
 
   <script>
@@ -734,6 +1035,57 @@
       const speed = scrolled * 0.1;
       
       parallax.style.transform = `translateY(${speed}px)`;
+    });
+
+    // Practice Questions Functionality
+    document.getElementById('practiceBtn').addEventListener('click', function() {
+      const practiceSection = document.getElementById('practiceSection');
+      const button = this;
+      
+      if (practiceSection.style.display === 'none') {
+        // Show practice section
+        practiceSection.style.display = 'block';
+        setTimeout(() => {
+          practiceSection.classList.add('show');
+        }, 10);
+        
+        // Update button text
+        button.innerHTML = '<span class="emoji">📚</span> Hide Questions';
+        
+        // Scroll to practice section
+        setTimeout(() => {
+          practiceSection.scrollIntoView({ 
+            behavior: 'smooth', 
+            block: 'start' 
+          });
+        }, 300);
+      } else {
+        // Hide practice section
+        practiceSection.classList.remove('show');
+        setTimeout(() => {
+          practiceSection.style.display = 'none';
+        }, 600);
+        
+        // Update button text
+        button.innerHTML = '<span class="emoji">📝</span> Practice Questions';
+      }
+    });
+
+    // Back to top functionality
+    function scrollToTop() {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    }
+
+    // Add question numbering animation
+    document.addEventListener('DOMContentLoaded', function() {
+      const questionBoxes = document.querySelectorAll('.question-box');
+      
+      questionBoxes.forEach((box, index) => {
+        box.style.animationDelay = `${index * 0.1}s`;
+      });
     });
   </script>
 </body>
