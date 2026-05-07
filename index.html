@@ -5,555 +5,498 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Risk-Adjusted WACC</title>
   <style>
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    
-    body { 
-      font-family: "Segoe UI", sans-serif; 
-      background: linear-gradient(135deg, #f4f6f9 0%, #e8ecf4 100%); 
-      color: #1a1a2e; 
-      padding: 40px 20px; 
-      animation: fadeIn 0.8s ease-out;
-    }
-    
-    .concept-page { 
-      max-width: 820px; 
-      margin: 0 auto; 
-      background: #fff; 
-      border-radius: 12px; 
-      padding: 48px; 
-      box-shadow: 0 4px 24px rgba(0,0,0,0.08); 
-      animation: slideInUp 0.9s ease-out;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-    
-    .concept-page:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 32px rgba(0,0,0,0.12);
-    }
-    
-    h1 { 
-      font-size: 1.9rem; 
-      color: #1a1a2e; 
-      margin-top: 36px; 
-      margin-bottom: 14px; 
-      border-left: 5px solid #4f46e5; 
-      padding-left: 14px; 
-      opacity: 0;
-      animation: slideInLeft 0.8s ease-out 0.3s forwards;
-      transition: color 0.3s ease, border-color 0.3s ease;
-    }
-    
-    h1:first-child { 
-      margin-top: 0; 
-      animation-delay: 0.1s;
-    }
-    
-    h1:hover {
-      color: #4f46e5;
-      border-color: #22c55e;
-    }
-    
-    h2 { 
-      font-size: 1.3rem; 
-      color: #3730a3; 
-      margin-top: 28px; 
-      margin-bottom: 10px; 
-      opacity: 0;
-      animation: fadeInUp 0.6s ease-out 0.4s forwards;
-      transition: color 0.3s ease, transform 0.3s ease;
-    }
-    
-    h2:hover {
-      color: #4f46e5;
-      transform: translateX(5px);
-    }
-    
-    h3 { 
-      font-size: 1.1rem; 
-      color: #4f46e5; 
-      margin-top: 22px; 
-      margin-bottom: 8px; 
-      opacity: 0;
-      animation: fadeInUp 0.6s ease-out 0.5s forwards;
-      transition: color 0.3s ease;
-    }
-    
-    h3:hover {
-      color: #22c55e;
-    }
-    
-    p { 
-      line-height: 1.75; 
-      margin-bottom: 14px; 
-      color: #374151; 
-      opacity: 0;
-      animation: fadeInUp 0.6s ease-out 0.6s forwards;
-      transition: color 0.3s ease;
-    }
-    
-    ul { 
-      margin: 10px 0 16px 24px; 
-      line-height: 1.9; 
-      color: #374151; 
-      opacity: 0;
-      animation: fadeInUp 0.6s ease-out 0.7s forwards;
-    }
-    
-    ul li {
-      transition: transform 0.3s ease, color 0.3s ease;
-      cursor: default;
-    }
-    
-    ul li:hover {
-      transform: translateX(5px);
-      color: #4f46e5;
-    }
-    
-    code { 
-      background: #eef2ff; 
-      color: #4338ca; 
-      padding: 3px 8px; 
-      border-radius: 5px; 
-      font-family: "Courier New", monospace; 
-      transition: all 0.3s ease;
-      cursor: pointer;
-    }
-    
-    code:hover {
-      background: #4f46e5;
-      color: white;
-      transform: scale(1.05);
-      box-shadow: 0 2px 8px rgba(79, 70, 229, 0.3);
-    }
-    
-    blockquote { 
-      background: #f0fdf4; 
-      border-left: 4px solid #22c55e; 
-      padding: 14px 20px; 
-      border-radius: 6px; 
-      margin: 16px 0; 
-      color: #166534; 
-      font-style: italic; 
-      line-height: 1.8; 
-      opacity: 0;
-      animation: slideInRight 0.8s ease-out 0.8s forwards;
-      transition: all 0.3s ease;
-    }
-    
-    blockquote:hover {
-      background: #dcfce7;
-      transform: translateX(5px);
-      box-shadow: 0 4px 12px rgba(34, 197, 94, 0.2);
-    }
-    
-    table { 
-      width: 100%; 
-      border-collapse: collapse; 
-      margin: 16px 0 24px; 
-      opacity: 0;
-      animation: fadeInUp 0.8s ease-out 0.9s forwards;
-      border-radius: 8px;
-      overflow: hidden;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    }
-    
-    th { 
-      background: #4f46e5; 
-      color: white; 
-      padding: 10px 16px; 
-      text-align: left; 
-      transition: background-color 0.3s ease;
-    }
-    
-    th:hover {
-      background: #3730a3;
-    }
-    
-    td { 
-      padding: 10px 16px; 
-      border-bottom: 1px solid #e5e7eb; 
-      color: #374151; 
-      transition: all 0.3s ease;
-    }
-    
-    tr:nth-child(even) td { 
-      background: #f9fafb; 
-    }
-    
-    tr:hover td {
-      background: #eef2ff;
-      color: #4338ca;
-      transform: scale(1.02);
-    }
-    
-    hr { 
-      border: none; 
-      border-top: 2px solid #e5e7eb; 
-      margin: 36px 0; 
-      opacity: 0;
-      animation: expandWidth 1s ease-out 1s forwards;
-      transition: border-color 0.3s ease;
-    }
-    
-    hr:hover {
-      border-color: #4f46e5;
+    /* ===== RESET & BASE ===== */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: "Segoe UI", system-ui, sans-serif;
+      background: linear-gradient(135deg, #eef2ff 0%, #e0e7ff 50%, #dbeafe 100%);
+      background-attachment: fixed;
+      color: #1e293b;
+      min-height: 100vh;
     }
 
-    /* Keyframe Animations */
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
+    /* ===== TOP NAVIGATION ===== */
+    .top-nav {
+      position: sticky; top: 0; z-index: 1000;
+      display: flex; justify-content: center; align-items: center; gap: 16px;
+      padding: 16px 24px;
+      background: rgba(255,255,255,0.93);
+      backdrop-filter: blur(16px);
+      box-shadow: 0 2px 20px rgba(79,70,229,0.12);
+      border-bottom: 1px solid rgba(79,70,229,0.08);
+    }
+
+    .nav-btn {
+      padding: 10px 28px; font-size: 0.95rem; font-weight: 700;
+      border: 2px solid #4f46e5; border-radius: 50px; cursor: pointer;
+      transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
+      background: transparent; color: #4f46e5; letter-spacing: 0.2px;
+      position: relative; overflow: hidden;
+    }
+
+    .nav-btn::after {
+      content: ""; position: absolute; inset: 0;
+      background: #4f46e5; border-radius: 50px;
+      transform: scaleX(0); transform-origin: left;
+      transition: transform 0.3s ease; z-index: -1;
+    }
+
+    .nav-btn:hover::after, .nav-btn.active::after { transform: scaleX(1); }
+    .nav-btn:hover, .nav-btn.active {
+      color: white; transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(79,70,229,0.35);
+    }
+
+    .nav-btn.hedging-btn { border-color: #0ea5e9; color: #0ea5e9; }
+    .nav-btn.hedging-btn::after { background: #0ea5e9; }
+    .nav-btn.hedging-btn:hover, .nav-btn.hedging-btn.active {
+      color: white; box-shadow: 0 6px 20px rgba(14,165,233,0.35);
+    }
+
+    /* ===== PAGE SECTIONS ===== */
+    .page-section { display: none; }
+    .page-section.active { display: block; animation: pageFadeIn 0.5s ease-out; }
+
+    @keyframes pageFadeIn {
+      from { opacity: 0; transform: translateY(18px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ===== MAIN CARD ===== */
+    .concept-page {
+      max-width: 860px; margin: 36px auto;
+      background: #fff; border-radius: 20px; padding: 52px 56px;
+      box-shadow: 0 8px 40px rgba(79,70,229,0.1), 0 2px 8px rgba(0,0,0,0.04);
+    }
+
+    /* ===== MOBILE RESPONSIVE ===== */
+    @media (max-width: 768px) {
+      body { padding: 0; }
+      
+      .top-nav {
+        flex-wrap: wrap;
+        padding: 12px 16px;
+        gap: 10px;
+      }
+      
+      .nav-logo { display: none; }
+      
+      .nav-btn {
+        flex: 1;
+        min-width: 140px;
+        padding: 10px 20px;
+        font-size: 0.88rem;
+      }
+      
+      .concept-page {
+        padding: 32px 20px;
+        margin: 16px 12px;
+        border-radius: 16px;
+      }
+      
+      h1 {
+        font-size: 1.4rem;
+        margin-top: 32px;
+        padding-left: 12px;
+        border-left-width: 4px;
+      }
+      
+      h1:first-child { font-size: 1.5rem; }
+      
+      h2 { font-size: 1.05rem; margin-top: 22px; }
+      h3 { font-size: 0.96rem; margin-top: 16px; }
+      
+      p, ul, ol { font-size: 0.93rem; line-height: 1.7; }
+      
+      .formula-box {
+        padding: 18px 16px;
+        font-size: 1rem;
+        overflow-x: auto;
+      }
+      
+      .comparison-table {
+        grid-template-columns: 1fr !important;
+        gap: 12px;
+      }
+      
+      .comparison-card {
+        padding: 16px 14px;
+      }
+      
+      table {
+        font-size: 0.85rem;
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+      }
+      
+      th, td {
+        padding: 9px 12px;
+        font-size: 0.82rem;
+      }
+      
+      .step-box, .info-box, .warning-box, .hedging-tip {
+        padding: 14px 16px;
+        font-size: 0.91rem;
+      }
+      
+      .question-box {
+        padding: 20px 18px;
+      }
+      
+      .navigation-section {
+        padding: 28px 20px;
+        margin: 28px 0 0;
+      }
+      
+      .navigation-section h2 { font-size: 1.2rem; }
+      
+      .practice-button {
+        padding: 12px 28px;
+        font-size: 0.95rem;
+      }
+      
+      .section-header {
+        padding: 14px 18px;
+        margin: 24px 0 16px;
+      }
+      
+      .section-header h2 { font-size: 1rem; }
+      
+      .task-box {
+        padding: 12px 16px;
+        font-size: 0.88rem;
+      }
+      
+      .completion-box {
+        padding: 28px 20px;
+      }
+      
+      .completion-box h3 { font-size: 1.2rem; }
+      
+      code {
+        font-size: 0.86rem;
+        padding: 3px 8px;
+      }
+      
+      blockquote {
+        padding: 12px 16px;
+        font-size: 0.91rem;
+      }
+      
+      hr { margin: 32px 0; }
     }
     
-    @keyframes slideInUp {
-      from { 
-        opacity: 0; 
-        transform: translateY(30px); 
+    @media (max-width: 480px) {
+      .concept-page {
+        padding: 24px 16px;
+        margin: 12px 8px;
       }
-      to { 
-        opacity: 1; 
-        transform: translateY(0); 
+      
+      h1 { font-size: 1.3rem; }
+      h1:first-child { font-size: 1.4rem; }
+      
+      .nav-btn {
+        font-size: 0.82rem;
+        padding: 9px 16px;
       }
-    }
-    
-    @keyframes slideInLeft {
-      from { 
-        opacity: 0; 
-        transform: translateX(-30px); 
+      
+      .formula-box {
+        font-size: 0.92rem;
+        padding: 16px 14px;
       }
-      to { 
-        opacity: 1; 
-        transform: translateX(0); 
+      
+      table {
+        font-size: 0.8rem;
       }
-    }
-    
-    @keyframes slideInRight {
-      from { 
-        opacity: 0; 
-        transform: translateX(30px); 
-      }
-      to { 
-        opacity: 1; 
-        transform: translateX(0); 
-      }
-    }
-    
-    @keyframes fadeInUp {
-      from { 
-        opacity: 0; 
-        transform: translateY(20px); 
-      }
-      to { 
-        opacity: 1; 
-        transform: translateY(0); 
-      }
-    }
-    
-    @keyframes expandWidth {
-      from { 
-        opacity: 0; 
-        width: 0; 
-      }
-      to { 
-        opacity: 1; 
-        width: 100%; 
+      
+      th, td {
+        padding: 8px 10px;
+        font-size: 0.78rem;
       }
     }
 
-    /* Scroll-triggered animations */
-    .animate-on-scroll {
-      opacity: 0;
-      transform: translateY(20px);
-      transition: all 0.6s ease-out;
+    /* ===== HEADINGS ===== */
+    h1 {
+      font-size: 1.7rem; font-weight: 800; color: #1e293b;
+      margin-top: 40px; margin-bottom: 16px;
+      padding-left: 16px; border-left: 5px solid #4f46e5;
+      line-height: 1.3; letter-spacing: -0.3px;
     }
-    
-    .animate-on-scroll.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
+    h1:first-child { margin-top: 0; }
 
-    /* Pulse animation for important elements */
-    @keyframes pulse {
-      0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.05); }
-    }
-    
-    .pulse-on-hover:hover {
-      animation: pulse 0.6s ease-in-out;
-    }
+    h2 { font-size: 1.15rem; font-weight: 700; color: #3730a3; margin-top: 26px; margin-bottom: 10px; }
+    h3 { font-size: 1.02rem; font-weight: 700; color: #4f46e5; margin-top: 18px; margin-bottom: 8px; }
+    h4 { font-size: 0.93rem; font-weight: 700; color: #1e293b; margin-bottom: 6px; }
 
-    /* Enhanced styling for new sections */
-    .warning-box {
-      background: #fef3c7;
-      border-left: 4px solid #f59e0b;
-      padding: 14px 20px;
-      border-radius: 6px;
-      margin: 16px 0;
-      color: #92400e;
-      opacity: 0;
-      animation: slideInRight 0.8s ease-out 0.8s forwards;
+    p { line-height: 1.8; margin-bottom: 14px; color: #475569; font-size: 0.96rem; }
+
+    ul { margin: 8px 0 16px 0; line-height: 2; color: #475569; font-size: 0.96rem; list-style: none; }
+    ul li { padding-left: 20px; position: relative; }
+    ul li::before { content: "\25B8"; position: absolute; left: 0; color: #4f46e5; font-size: 0.85em; top: 2px; }
+
+    ol { margin: 8px 0 0 20px; line-height: 2; color: #475569; font-size: 0.96rem; }
+
+    strong { color: #1e293b; }
+
+    code {
+      background: #eef2ff; color: #4338ca; padding: 4px 10px;
+      border-radius: 6px; font-family: "Courier New", monospace;
+      font-size: 0.92rem; font-weight: 600;
+      transition: all 0.25s ease; cursor: pointer; display: inline-block;
+    }
+    code:hover { background: #4f46e5; color: white; transform: scale(1.04); box-shadow: 0 2px 10px rgba(79,70,229,0.35); }
+
+    blockquote {
+      background: #f0fdf4; border-left: 4px solid #22c55e;
+      padding: 14px 20px; border-radius: 8px; margin: 16px 0;
+      color: #166534; font-style: italic; line-height: 1.8; font-size: 0.96rem;
       transition: all 0.3s ease;
     }
-    
-    .warning-box:hover {
-      background: #fde68a;
-      transform: translateX(5px);
-      box-shadow: 0 4px 12px rgba(245, 158, 11, 0.2);
-    }
+    blockquote:hover { background: #dcfce7; transform: translateX(4px); box-shadow: 0 4px 14px rgba(34,197,94,0.18); }
 
-    .info-box {
-      background: #dbeafe;
-      border-left: 4px solid #3b82f6;
-      padding: 14px 20px;
-      border-radius: 6px;
-      margin: 16px 0;
-      color: #1e40af;
-      opacity: 0;
-      animation: slideInRight 0.8s ease-out 0.8s forwards;
-      transition: all 0.3s ease;
-    }
-    
-    .info-box:hover {
-      background: #bfdbfe;
-      transform: translateX(5px);
-      box-shadow: 0 4px 12px rgba(59, 130, 246, 0.2);
-    }
-
-    .formula-box {
-      background: #f3e8ff;
-      border: 2px solid #8b5cf6;
-      padding: 20px;
-      border-radius: 8px;
-      margin: 20px 0;
-      text-align: center;
-      font-size: 1.1rem;
-      font-weight: bold;
-      color: #5b21b6;
-      opacity: 0;
-      animation: fadeInUp 0.8s ease-out 0.9s forwards;
-      transition: all 0.3s ease;
-    }
-    
-    .formula-box:hover {
-      background: #ede9fe;
-      transform: scale(1.02);
-      box-shadow: 0 4px 16px rgba(139, 92, 246, 0.3);
-    }
-
-    .step-box {
-      background: #f0f9ff;
-      border: 1px solid #0ea5e9;
-      padding: 16px;
-      border-radius: 8px;
-      margin: 12px 0;
-      opacity: 0;
-      animation: fadeInUp 0.6s ease-out 0.7s forwards;
-      transition: all 0.3s ease;
-    }
-    
-    .step-box:hover {
-      background: #e0f2fe;
-      transform: translateY(-2px);
-      box-shadow: 0 4px 12px rgba(14, 165, 233, 0.2);
-    }
-
-    .comparison-table {
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
-      gap: 16px;
-      margin: 20px 0;
-      opacity: 0;
-      animation: fadeInUp 0.8s ease-out 0.9s forwards;
-    }
-
-    .comparison-card {
-      background: #f8fafc;
-      border: 2px solid #e2e8f0;
-      padding: 16px;
-      border-radius: 8px;
-      text-align: center;
-      transition: all 0.3s ease;
-    }
-    
-    .comparison-card:hover {
-      border-color: #4f46e5;
-      transform: translateY(-4px);
-      box-shadow: 0 8px 20px rgba(79, 70, 229, 0.15);
-    }
-
-    .emoji {
-      font-size: 1.2em;
-      margin-right: 8px;
-    }
-
-    /* Navigation and Practice Questions Styling */
-    .navigation-section {
-      text-align: center;
-      padding: 30px;
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      border-radius: 12px;
-      margin: 30px 0;
-      color: white;
-      opacity: 0;
-      animation: fadeInUp 0.8s ease-out 1.2s forwards;
-    }
-
-    .practice-button {
-      background: linear-gradient(135deg, #ff6b6b 0%, #ee5a24 100%);
-      color: white;
-      border: none;
-      padding: 15px 30px;
-      font-size: 1.1rem;
-      font-weight: bold;
-      border-radius: 8px;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      margin-top: 15px;
-      box-shadow: 0 4px 15px rgba(238, 90, 36, 0.3);
-    }
-
-    .practice-button:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 8px 25px rgba(238, 90, 36, 0.4);
-      background: linear-gradient(135deg, #ee5a24 0%, #ff6b6b 100%);
-    }
-
-    .practice-section {
-      margin-top: 40px;
-      opacity: 0;
-      transform: translateY(20px);
-      transition: all 0.6s ease-out;
-    }
-
-    .practice-section.show {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    .section-header {
-      padding: 20px;
-      border-radius: 8px;
-      margin: 30px 0 20px 0;
-      text-align: center;
-      font-weight: bold;
-    }
-
-    .basic-section {
-      background: linear-gradient(135deg, #74b9ff 0%, #0984e3 100%);
-      color: white;
-    }
-
-    .risk-section {
-      background: linear-gradient(135deg, #fd79a8 0%, #e84393 100%);
-      color: white;
-    }
-
-    .trap-section {
-      background: linear-gradient(135deg, #fdcb6e 0%, #e17055 100%);
-      color: white;
-    }
-
-    .exam-section {
-      background: linear-gradient(135deg, #6c5ce7 0%, #a29bfe 100%);
-      color: white;
-    }
-
-    .question-box {
-      background: #f8f9fa;
-      border: 2px solid #e9ecef;
-      border-radius: 10px;
-      padding: 25px;
-      margin: 20px 0;
-      transition: all 0.3s ease;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .question-box::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 4px;
-      height: 100%;
-      background: linear-gradient(135deg, #74b9ff 0%, #0984e3 100%);
-    }
-
-    .question-box:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 25px rgba(0,0,0,0.1);
-      border-color: #74b9ff;
-    }
-
-    .trap-question::before {
-      background: linear-gradient(135deg, #fdcb6e 0%, #e17055 100%);
-    }
-
-    .exam-question::before {
-      background: linear-gradient(135deg, #6c5ce7 0%, #a29bfe 100%);
-    }
-
-    .task-box {
-      background: linear-gradient(135deg, #00b894 0%, #00cec9 100%);
-      color: white;
-      padding: 15px;
-      border-radius: 8px;
-      margin-top: 15px;
-      font-weight: bold;
-    }
-
-    .task-box ol {
-      margin: 10px 0 0 20px;
-      color: white;
-    }
-
-    .completion-box {
-      background: linear-gradient(135deg, #00b894 0%, #00cec9 100%);
-      color: white;
-      padding: 30px;
-      border-radius: 12px;
-      text-align: center;
+    hr {
+      border: none; height: 1px;
+      background: linear-gradient(90deg, transparent, #c7d2fe 30%, #c7d2fe 70%, transparent);
       margin: 40px 0;
     }
 
-    .back-to-top-btn {
-      background: rgba(255, 255, 255, 0.2);
-      color: white;
-      border: 2px solid white;
-      padding: 12px 25px;
-      border-radius: 8px;
-      cursor: pointer;
-      font-weight: bold;
+    /* ===== TABLES ===== */
+    .table-wrap { overflow-x: auto; border-radius: 12px; box-shadow: 0 2px 14px rgba(0,0,0,0.07); margin: 18px 0 26px; }
+
+    table { width: 100%; border-collapse: collapse; font-size: 0.92rem; }
+
+    th {
+      background: linear-gradient(135deg, #4f46e5, #6366f1);
+      color: white; padding: 12px 18px; text-align: left;
+      font-weight: 700; font-size: 0.85rem; letter-spacing: 0.4px; text-transform: uppercase;
+    }
+
+    td { padding: 11px 18px; border-bottom: 1px solid #f1f5f9; color: #475569; transition: background 0.2s, color 0.2s; }
+    tr:last-child td { border-bottom: none; }
+    tr:nth-child(even) td { background: #f8fafc; }
+    tr:hover td { background: #eef2ff; color: #3730a3; }
+
+    /* ===== BOXES ===== */
+    .warning-box {
+      background: linear-gradient(135deg, #fffbeb, #fef3c7);
+      border-left: 4px solid #f59e0b; padding: 16px 20px;
+      border-radius: 10px; margin: 18px 0; color: #78350f;
+      font-size: 0.94rem; line-height: 1.7; transition: all 0.3s ease;
+    }
+    .warning-box:hover { transform: translateX(4px); box-shadow: 0 4px 16px rgba(245,158,11,0.2); }
+
+    .info-box {
+      background: linear-gradient(135deg, #eff6ff, #dbeafe);
+      border-left: 4px solid #3b82f6; padding: 16px 20px;
+      border-radius: 10px; margin: 18px 0; color: #1e3a8a;
+      font-size: 0.94rem; line-height: 1.7; transition: all 0.3s ease;
+    }
+    .info-box:hover { transform: translateX(4px); box-shadow: 0 4px 16px rgba(59,130,246,0.2); }
+
+    .formula-box {
+      background: linear-gradient(135deg, #f5f3ff, #ede9fe);
+      border: 2px solid #8b5cf6; padding: 22px 28px;
+      border-radius: 12px; margin: 22px 0; text-align: center;
+      font-size: 1.15rem; font-weight: 800; color: #5b21b6;
+      letter-spacing: 0.5px; font-family: "Courier New", monospace;
       transition: all 0.3s ease;
-      margin-top: 15px;
     }
+    .formula-box:hover { transform: scale(1.02); box-shadow: 0 6px 24px rgba(139,92,246,0.25); }
 
-    .back-to-top-btn:hover {
-      background: white;
-      color: #00b894;
-      transform: translateY(-2px);
+    .step-box {
+      background: #f8fafc; border: 1px solid #e2e8f0;
+      border-left: 4px solid #0ea5e9; padding: 18px 20px;
+      border-radius: 10px; margin: 12px 0; transition: all 0.3s ease;
     }
+    .step-box:hover { background: #f0f9ff; transform: translateX(4px); box-shadow: 0 4px 16px rgba(14,165,233,0.15); }
 
-    /* Animation for showing practice section */
+    /* ===== COMPARISON CARDS ===== */
+    .comparison-table { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; margin: 20px 0; }
+
+    .comparison-card {
+      background: #f8fafc; border: 2px solid #e2e8f0;
+      padding: 20px 16px; border-radius: 12px; text-align: center;
+      transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
+    }
+    .comparison-card:hover {
+      border-color: #4f46e5; transform: translateY(-6px);
+      box-shadow: 0 12px 28px rgba(79,70,229,0.15); background: #eef2ff;
+    }
+    .comparison-card h4 { color: #4f46e5; margin-bottom: 8px; font-size: 0.98rem; }
+    .comparison-card p  { color: #64748b; font-size: 0.88rem; margin: 0 0 8px; }
+
+    /* ===== NAVIGATION BANNER ===== */
+    .navigation-section {
+      text-align: center; padding: 36px 28px;
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      border-radius: 16px; margin: 36px 0 0; color: white;
+    }
+    .navigation-section h2 { color: white; font-size: 1.35rem; margin-bottom: 10px; }
+    .navigation-section p  { color: rgba(255,255,255,0.85); margin-bottom: 0; }
+
+    .practice-button {
+      background: white; color: #667eea; border: none;
+      padding: 14px 32px; font-size: 1rem; font-weight: 800;
+      border-radius: 50px; cursor: pointer; transition: all 0.3s ease;
+      margin-top: 18px; box-shadow: 0 4px 18px rgba(0,0,0,0.15); display: inline-block;
+    }
+    .practice-button:hover { transform: translateY(-3px); box-shadow: 0 10px 28px rgba(0,0,0,0.2); background: #f0f0ff; }
+
+    /* ===== PRACTICE SECTION ===== */
+    .practice-section { margin-top: 40px; opacity: 0; transform: translateY(20px); transition: all 0.5s cubic-bezier(0.4,0,0.2,1); }
+    .practice-section.show { opacity: 1; transform: translateY(0); animation: slideDown 0.5s ease-out; }
+
     @keyframes slideDown {
-      from {
-        opacity: 0;
-        transform: translateY(-20px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+      from { opacity: 0; transform: translateY(-16px); }
+      to   { opacity: 1; transform: translateY(0); }
     }
 
-    .practice-section.show {
-      animation: slideDown 0.6s ease-out;
+    .section-header { padding: 18px 24px; border-radius: 12px; margin: 32px 0 20px; text-align: center; }
+    .section-header h2 { color: white; margin: 0; font-size: 1.1rem; }
+
+    .basic-section { background: linear-gradient(135deg, #74b9ff, #0984e3); }
+    .risk-section  { background: linear-gradient(135deg, #fd79a8, #e84393); }
+    .trap-section  { background: linear-gradient(135deg, #fdcb6e, #e17055); }
+    .exam-section  { background: linear-gradient(135deg, #6c5ce7, #a29bfe); }
+
+    .question-box {
+      background: #fafafa; border: 1.5px solid #e2e8f0;
+      border-radius: 14px; padding: 26px 28px; margin: 18px 0;
+      transition: all 0.3s ease; position: relative; overflow: hidden;
     }
+    .question-box::before {
+      content: ""; position: absolute; top: 0; left: 0;
+      width: 5px; height: 100%;
+      background: linear-gradient(180deg, #74b9ff, #0984e3);
+      border-radius: 4px 0 0 4px;
+    }
+    .question-box:hover { transform: translateY(-3px); box-shadow: 0 10px 30px rgba(0,0,0,0.09); border-color: #93c5fd; }
+    .trap-question::before { background: linear-gradient(180deg, #fdcb6e, #e17055); }
+    .exam-question::before { background: linear-gradient(180deg, #6c5ce7, #a29bfe); }
+
+    .task-box {
+      background: linear-gradient(135deg, #00b894, #00cec9);
+      color: white; padding: 14px 18px; border-radius: 10px;
+      margin-top: 16px; font-weight: 700; font-size: 0.92rem; line-height: 1.7;
+    }
+    .task-box ol { margin: 8px 0 0 18px; color: white; }
+    .task-box ol li::before { content: none; }
+
+    .completion-box {
+      background: linear-gradient(135deg, #00b894, #00cec9);
+      color: white; padding: 36px 28px; border-radius: 16px;
+      text-align: center; margin: 40px 0 0;
+    }
+    .completion-box h3 { color: white; font-size: 1.35rem; margin-bottom: 10px; }
+    .completion-box p  { color: rgba(255,255,255,0.9); margin-bottom: 0; }
+
+    .back-to-top-btn {
+      background: rgba(255,255,255,0.2); color: white;
+      border: 2px solid white; padding: 12px 28px;
+      border-radius: 50px; cursor: pointer; font-weight: 700;
+      transition: all 0.3s ease; margin-top: 18px; font-size: 0.94rem;
+    }
+    .back-to-top-btn:hover { background: white; color: #00b894; transform: translateY(-2px); }
+
+    /* ===== HEDGING PAGE OVERRIDES ===== */
+    .hedging-page h1 { border-left-color: #0ea5e9; }
+    .hedging-page h2 { color: #0369a1; }
+    .hedging-page h3 { color: #0284c7; }
+    .hedging-page ul li::before { color: #0ea5e9; }
+
+    .hedging-page .formula-box {
+      background: linear-gradient(135deg, #f0f9ff, #e0f2fe);
+      border-color: #0ea5e9; color: #0c4a6e;
+    }
+    .hedging-page .formula-box:hover { box-shadow: 0 6px 24px rgba(14,165,233,0.25); }
+
+    .hedging-page th { background: linear-gradient(135deg, #0ea5e9, #38bdf8); }
+    .hedging-page tr:hover td { background: #e0f2fe; color: #0369a1; }
+    .hedging-page .step-box { border-left-color: #0ea5e9; }
+    .hedging-page .step-box:hover { background: #f0f9ff; }
+
+    .hedging-page blockquote { background: #f0f9ff; border-left-color: #0ea5e9; color: #0c4a6e; }
+    .hedging-page blockquote:hover { background: #e0f2fe; box-shadow: 0 4px 14px rgba(14,165,233,0.18); }
+
+    .hedging-page .navigation-section { background: linear-gradient(135deg, #0ea5e9, #0369a1); }
+    .hedging-page .practice-button { color: #0369a1; }
+    .hedging-page .practice-button:hover { background: #f0f9ff; }
+
+    .hedging-page .comparison-card:hover {
+      border-color: #0ea5e9; background: #f0f9ff;
+      box-shadow: 0 12px 28px rgba(14,165,233,0.15);
+    }
+    .hedging-page .comparison-card h4 { color: #0369a1; }
+
+    .hedging-tip {
+      background: linear-gradient(135deg, #f0fdf4, #dcfce7);
+      border-left: 4px solid #22c55e; padding: 16px 20px;
+      border-radius: 10px; margin: 18px 0; color: #14532d;
+      font-weight: 600; font-size: 0.94rem; line-height: 1.7; transition: all 0.3s ease;
+    }
+    .hedging-tip:hover { transform: translateX(4px); box-shadow: 0 4px 16px rgba(34,197,94,0.2); }
+
+    /* ===== SCROLL-REVEAL ANIMATIONS ===== */
+    .reveal {
+      opacity: 0; transform: translateY(30px);
+      transition: opacity 0.65s ease, transform 0.65s ease;
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    .reveal-left {
+      opacity: 0; transform: translateX(-30px);
+      transition: opacity 0.65s ease, transform 0.65s ease;
+    }
+    .reveal-left.visible { opacity: 1; transform: translateX(0); }
+
+    .reveal-right {
+      opacity: 0; transform: translateX(30px);
+      transition: opacity 0.65s ease, transform 0.65s ease;
+    }
+    .reveal-right.visible { opacity: 1; transform: translateX(0); }
+
+    /* stagger grid children */
+    .stagger-grid > * {
+      opacity: 0; transform: translateY(22px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+    .stagger-grid.visible > *:nth-child(1) { opacity:1; transform:none; transition-delay:0.05s; }
+    .stagger-grid.visible > *:nth-child(2) { opacity:1; transform:none; transition-delay:0.15s; }
+    .stagger-grid.visible > *:nth-child(3) { opacity:1; transform:none; transition-delay:0.25s; }
+    .stagger-grid.visible > *:nth-child(4) { opacity:1; transform:none; transition-delay:0.35s; }
+    .stagger-grid.visible > *:nth-child(5) { opacity:1; transform:none; transition-delay:0.45s; }
+
+    /* ===== MISC ===== */
+    .emoji { font-size: 1.1em; margin-right: 6px; }
+
+    .animate-on-scroll { opacity: 0; transform: translateY(20px); transition: all 0.6s ease-out; }
+    .animate-on-scroll.visible { opacity: 1; transform: translateY(0); }
+
+    @keyframes pulse { 0%,100% { transform: scale(1); } 50% { transform: scale(1.03); } }
+    .pulse-on-hover:hover { animation: pulse 0.7s ease-in-out; }
+
+    @keyframes ripple { to { transform: scale(4); opacity: 0; } }
   </style>
 </head>
 <body>
+
+  <!-- ===== TOP NAVIGATION ===== -->
+  <nav class="top-nav">
+    <span class="nav-logo">ACCA Guide</span>
+    <button class="nav-btn active" id="waccNavBtn" onclick="showSection('wacc')">
+      📊 Risk-Adjusted WACC
+    </button>
+    <button class="nav-btn hedging-btn" id="hedgingNavBtn" onclick="showSection('hedging')">
+      🛡️ Hedging
+    </button>
+  </nav>
+
+  <!-- ===== WACC SECTION ===== -->
+  <div id="waccSection" class="page-section active">
   <div class="concept-page">
-    <h1 class="pulse-on-hover">Risk-Adjusted WACC: Complete Guide</h1>
+    <h1 class="pulse-on-hover">📊 Risk-Adjusted WACC: Complete Guide</h1>
     
     <hr />
     <h1><span class="emoji">📊</span>What WACC Really Represents</h1>
@@ -947,145 +890,500 @@
       </div>
     </div>
   </div>
+  </div> <!-- end #waccSection -->
+
+  <!-- ===== HEDGING SECTION ===== -->
+  <div id="hedgingSection" class="page-section">
+  <div class="concept-page hedging-page">
+
+    <h1 class="pulse-on-hover">🛡️ Hedging: Complete ACCA Guide</h1>
+
+    <div class="info-box reveal">
+      Hedging is a very important topic in ACCA, especially in <strong>Financial Management (FM)</strong> and <strong>Advanced Financial Management (AFM)</strong>. The topic looks difficult at first because it involves financial risk and derivative instruments, but the core idea is actually simple.
+    </div>
+
+    <hr />
+    <h1>💡 1. What is Hedging?</h1>
+
+    <h2>Simple Meaning</h2>
+    <p>Hedging means <strong>reducing or protecting against financial risk</strong>. A company uses hedging when it is worried that:</p>
+    <ul>
+      <li>exchange rates may change</li>
+      <li>interest rates may rise</li>
+      <li>commodity prices may increase</li>
+      <li>investments may lose value</li>
+    </ul>
+
+    <h2>Everyday Example</h2>
+    <div class="step-box">
+      <p>Imagine you are traveling abroad next month.</p>
+      <p><strong>Today:</strong> 1 USD = ₹83</p>
+      <p>You fear the dollar may become expensive next month: 1 USD = ₹88</p>
+      <p>So you <strong>buy dollars today itself</strong>.</p>
+      <p>You protected yourself from future price changes. That protection is called <strong>hedging</strong>.</p>
+    </div>
+
+    <hr />
+    <h1>🏢 2. Why Companies Hedge</h1>
+
+    <p>Businesses face uncertainty. Main risks include:</p>
+
+    <table>
+      <thead><tr><th>Risk Type</th><th>Meaning</th></tr></thead>
+      <tbody>
+        <tr><td>Exchange Rate Risk</td><td>Currency values changing</td></tr>
+        <tr><td>Interest Rate Risk</td><td>Borrowing costs changing</td></tr>
+        <tr><td>Commodity Price Risk</td><td>Oil, wheat, metals prices changing</td></tr>
+        <tr><td>Share Price Risk</td><td>Investment values falling</td></tr>
+      </tbody>
+    </table>
+
+    <p>Hedging helps firms:</p>
+    <ul>
+      <li>stabilize cash flows</li>
+      <li>reduce uncertainty</li>
+      <li>improve planning</li>
+      <li>protect profits</li>
+    </ul>
+
+    <hr />
+    <h1>🎯 3. Key Idea in ACCA</h1>
+
+    <div class="warning-box">
+      <strong>Hedging ≠ Making Profit — This is VERY important in ACCA exams.</strong><br><br>
+      The aim is: <strong>not to maximize profit</strong> but to <strong>reduce risk and uncertainty</strong>.<br><br>
+      A hedge may reduce losses, but also reduce extra gains. Think of it like insurance.
+    </div>
+
+    <hr />
+    <h1>🔧 4. Types of Hedging in ACCA</h1>
+
+    <table>
+      <thead><tr><th>Method</th><th>Used For</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Forward Contracts</strong></td><td>Currency risk</td></tr>
+        <tr><td><strong>Futures Contracts</strong></td><td>Currency, interest, commodities</td></tr>
+        <tr><td><strong>Options</strong></td><td>Flexible protection</td></tr>
+        <tr><td><strong>Money Market Hedge</strong></td><td>Currency exposure</td></tr>
+        <tr><td><strong>Swaps</strong></td><td>Interest rate and currency management</td></tr>
+      </tbody>
+    </table>
+
+    <hr />
+    <h1>📄 5. Forward Contracts</h1>
+
+    <h2>Meaning</h2>
+    <p>A forward contract is an agreement to buy or sell something at a <strong>fixed future price</strong> on a <strong>future date</strong>. Usually used for foreign exchange risk.</p>
+
+    <h2>Example</h2>
+    <div class="step-box">
+      <p>An Indian company must pay <strong>USD 100,000</strong> after 3 months.</p>
+      <p>Current exchange rate: ₹83/USD. The company fears the dollar may rise.</p>
+      <p>Bank offers a forward rate: <strong>₹84/USD for 3 months</strong>.</p>
+      <p>The company agrees today. After 3 months — even if dollar becomes ₹90 — company still buys at ₹84.</p>
+    </div>
+
+    <table>
+      <thead><tr><th>Benefit</th><th>Disadvantage</th></tr></thead>
+      <tbody>
+        <tr><td>Certainty — protection against unfavorable movement</td><td>If rate becomes favorable (say ₹80/USD), company still must use ₹84. Extra gains are lost.</td></tr>
+      </tbody>
+    </table>
+
+    <hr />
+    <h1>📈 6. Futures Contracts</h1>
+
+    <p>Futures are similar to forwards but <strong>standardized</strong> and <strong>traded on exchanges</strong>, making them easier to buy/sell. Used for currencies, commodities, and interest rates.</p>
+
+    <table>
+      <thead><tr><th>Feature</th><th>Futures</th></tr></thead>
+      <tbody>
+        <tr><td>Standardized</td><td>✅ Yes</td></tr>
+        <tr><td>Exchange traded</td><td>✅ Yes</td></tr>
+        <tr><td>Daily settlement</td><td>✅ Yes</td></tr>
+        <tr><td>More flexible to trade</td><td>✅ Yes</td></tr>
+      </tbody>
+    </table>
+
+    <div class="info-box">
+      <strong>ACCA Exam Focus:</strong> You may see contract sizes, basis risk, number of contracts, and gain/loss calculations.
+    </div>
+
+    <hr />
+    <h1>⚖️ 7 &amp; 8. Options — Call vs Put</h1>
+
+    <p>An option gives the <strong>right but not the obligation</strong> to buy or sell. This is one of the most important concepts.</p>
+
+    <table>
+      <thead><tr><th>Option Type</th><th>Meaning</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Call Option</strong></td><td>Right to BUY</td></tr>
+        <tr><td><strong>Put Option</strong></td><td>Right to SELL</td></tr>
+      </tbody>
+    </table>
+
+    <hr />
+    <h1>💪 9. Why Options are Powerful</h1>
+
+    <p>Options protect against bad outcomes while allowing good outcomes.</p>
+
+    <div class="step-box">
+      <p>A company must buy USD after 3 months. It buys a <strong>call option at ₹84/USD</strong>.</p>
+      <p><strong>Scenario 1:</strong> Dollar rises to ₹90 → Use option → buy at ₹84. ✅</p>
+      <p><strong>Scenario 2:</strong> Dollar falls to ₹80 → Ignore option → buy at market ₹80. ✅</p>
+    </div>
+
+    <div class="hedging-tip">
+      This flexibility is the biggest advantage of options over forwards and futures.
+    </div>
+
+    <div class="warning-box">
+      <strong>Disadvantage:</strong> Options require paying a <strong>premium (fee)</strong> — like an insurance premium.
+    </div>
+
+    <hr />
+    <h1>🏦 10. Money Market Hedge</h1>
+
+    <p>This is a <strong>favorite ACCA calculation topic</strong>. Using borrowing, lending, deposits, and foreign currencies to eliminate exchange risk.</p>
+
+    <div class="step-box">
+      <h3>Example Structure — Company must pay USD after 3 months:</h3>
+      <ol>
+        <li>Calculate present value of future USD.</li>
+        <li>Borrow local currency.</li>
+        <li>Convert into USD now.</li>
+        <li>Invest USD.</li>
+        <li>Investment grows to required payment.</li>
+      </ol>
+      <p style="margin-top:10px;"><strong>Result:</strong> Future exchange risk disappears.</p>
+    </div>
+
+    <hr />
+    <h1>🔄 11–13. Swaps</h1>
+
+    <p>Two parties <strong>exchange cash flows</strong>. Main types: interest rate swaps and currency swaps.</p>
+
+    <h2>Interest Rate Swap</h2>
+    <div class="step-box">
+      <p><strong>Company A:</strong> has floating interest loan, wants fixed rate.</p>
+      <p><strong>Company B:</strong> has fixed rate loan, wants floating rate.</p>
+      <p>They exchange payment obligations. This is called a <strong>swap</strong>.</p>
+    </div>
+
+    <h2>Currency Swap</h2>
+    <p>Companies exchange principal, interest payments, and currencies. Useful for multinational companies.</p>
+
+    <hr />
+    <h1>🌿 14. Natural Hedging</h1>
+
+    <div class="hedging-tip">
+      Example: If a company receives USD revenue and pays USD expenses, exchange risk naturally reduces. This is called a <strong>Natural Hedge</strong> — no derivatives needed.
+    </div>
+
+    <hr />
+    <h1>⚔️ 15. Hedging vs Speculation</h1>
+
+    <table>
+      <thead><tr><th></th><th>Hedging</th><th>Speculation</th></tr></thead>
+      <tbody>
+        <tr><td>Purpose</td><td>Reduces risk</td><td>Takes risk</td></tr>
+        <tr><td>Goal</td><td>Protection</td><td>Profit</td></tr>
+        <tr><td>Style</td><td>Conservative</td><td>Aggressive</td></tr>
+        <tr><td>Example</td><td>Importer locking exchange rate</td><td>Trader betting currency will move</td></tr>
+      </tbody>
+    </table>
+
+    <hr />
+    <h1>✅ 16. Advantages of Hedging</h1>
+
+    <table>
+      <thead><tr><th>Advantage</th><th>Explanation</th></tr></thead>
+      <tbody>
+        <tr><td>Reduces uncertainty</td><td>Better planning</td></tr>
+        <tr><td>Protects profits</td><td>Avoids major losses</td></tr>
+        <tr><td>Stabilizes cash flows</td><td>Easier budgeting</td></tr>
+        <tr><td>Improves confidence</td><td>Investors and lenders prefer stability</td></tr>
+      </tbody>
+    </table>
+
+    <hr />
+    <h1>❌ 17. Disadvantages of Hedging</h1>
+
+    <table>
+      <thead><tr><th>Disadvantage</th><th>Explanation</th></tr></thead>
+      <tbody>
+        <tr><td>Cost</td><td>Premiums, fees</td></tr>
+        <tr><td>Opportunity loss</td><td>Favorable movement may be lost</td></tr>
+        <tr><td>Complexity</td><td>Requires expertise</td></tr>
+        <tr><td>Imperfect hedge</td><td>Some risk may remain</td></tr>
+      </tbody>
+    </table>
+
+    <hr />
+    <h1>📖 18. Important ACCA Exam Terms</h1>
+
+    <table>
+      <thead><tr><th>Term</th><th>Meaning</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Exposure</strong></td><td>Amount subject to risk. Example: USD receivable.</td></tr>
+        <tr><td><strong>Spot Rate</strong></td><td>Current exchange rate.</td></tr>
+        <tr><td><strong>Forward Rate</strong></td><td>Agreed future exchange rate.</td></tr>
+        <tr><td><strong>Basis Risk</strong></td><td>Risk that hedge may not perfectly match exposure. Common in futures.</td></tr>
+        <tr><td><strong>Premium</strong></td><td>Cost of buying an option.</td></tr>
+        <tr><td><strong>Strike Price</strong></td><td>Price at which option can be used.</td></tr>
+      </tbody>
+    </table>
+
+    <hr />
+    <h1>📝 19. How ACCA Tests Hedging</h1>
+
+    <table>
+      <thead><tr><th>FM Level</th><th>AFM Level</th></tr></thead>
+      <tbody>
+        <tr><td>Mostly calculations</td><td>Strategy evaluation</td></tr>
+        <tr><td>Choosing best hedge</td><td>Effectiveness analysis</td></tr>
+        <tr><td>Simple explanations</td><td>Risk management policies</td></tr>
+        <tr><td>—</td><td>Swaps and derivatives</td></tr>
+      </tbody>
+    </table>
+
+    <hr />
+    <h1>🧠 20. Easy Memory Tricks</h1>
+
+    <div class="comparison-table">
+      <div class="comparison-card">
+        <h4>FORWARD</h4>
+        <p>"Fix future price today."</p>
+        <span style="font-size:2em;">📌</span>
+      </div>
+      <div class="comparison-card">
+        <h4>FUTURES</h4>
+        <p>"Exchange-traded forwards."</p>
+        <span style="font-size:2em;">📊</span>
+      </div>
+      <div class="comparison-card">
+        <h4>OPTIONS</h4>
+        <p>"Right, not obligation."</p>
+        <span style="font-size:2em;">⚖️</span>
+      </div>
+    </div>
+    <div class="comparison-table">
+      <div class="comparison-card">
+        <h4>SWAPS</h4>
+        <p>"Exchange cash flows."</p>
+        <span style="font-size:2em;">🔄</span>
+      </div>
+      <div class="comparison-card">
+        <h4>HEDGE</h4>
+        <p>"Protection against uncertainty."</p>
+        <span style="font-size:2em;">🛡️</span>
+      </div>
+      <div class="comparison-card">
+        <h4>NATURAL HEDGE</h4>
+        <p>"Match currency in/out."</p>
+        <span style="font-size:2em;">🌿</span>
+      </div>
+    </div>
+
+    <hr />
+    <h1>🌍 21. Real-Life Example</h1>
+
+    <div class="step-box">
+      <p><strong>Suppose:</strong> An Indian importer must pay USD 1 million after 6 months.</p>
+      <p><strong>Problem:</strong> If rupee weakens, import becomes expensive.</p>
+      <p><strong>Possible hedges:</strong> Forward contract, Currency futures, Call option, Money market hedge.</p>
+      <p><strong>Goal:</strong> Protect company from exchange loss.</p>
+    </div>
+
+    <hr />
+    <h1>🏆 22. Which Hedge is Best?</h1>
+
+    <p>There is no universal answer.</p>
+
+    <table>
+      <thead><tr><th>Situation</th><th>Best Choice</th></tr></thead>
+      <tbody>
+        <tr><td>Need certainty</td><td>Forward</td></tr>
+        <tr><td>Want flexibility</td><td>Option</td></tr>
+        <tr><td>Large institutional hedge</td><td>Futures</td></tr>
+        <tr><td>Banking-based strategy</td><td>Money market</td></tr>
+        <tr><td>Long-term exposure</td><td>Swaps</td></tr>
+      </tbody>
+    </table>
+
+    <hr />
+    <h1>⚠️ 24. Common Student Mistakes</h1>
+
+    <table>
+      <thead><tr><th>Mistake</th><th>Correction</th></tr></thead>
+      <tbody>
+        <tr><td>Confusing call and put options</td><td>Call = Buy, Put = Sell</td></tr>
+        <tr><td>Forgetting premiums</td><td>Always include option premium</td></tr>
+        <tr><td>Wrong borrowing/lending rates</td><td>Use correct rate carefully</td></tr>
+        <tr><td>Mixing importer/exporter logic</td><td>Importer fears currency rise; exporter fears fall</td></tr>
+      </tbody>
+    </table>
+
+    <hr />
+    <h1>📋 25. Final Concept Summary</h1>
+
+    <div class="info-box">
+      <strong>Hedging is:</strong> risk management, protection, reducing uncertainty.<br><br>
+      <strong>Main Tools:</strong> Forwards · Futures · Options · Money Market Hedges · Swaps<br><br>
+      <strong>Main ACCA Goal:</strong> Choose the hedge that best balances cost, protection, and flexibility.
+    </div>
+
+    <h2>Quick One-Line Revision</h2>
+    <table>
+      <thead><tr><th>Topic</th><th>One-Line Meaning</th></tr></thead>
+      <tbody>
+        <tr><td>Forward</td><td>Lock future price</td></tr>
+        <tr><td>Futures</td><td>Tradable standardized forward</td></tr>
+        <tr><td>Option</td><td>Right without obligation</td></tr>
+        <tr><td>Swap</td><td>Exchange cash flows</td></tr>
+        <tr><td>Hedge</td><td>Reduce financial risk</td></tr>
+      </tbody>
+    </table>
+
+    <hr />
+    <div class="navigation-section">
+      <h2>📊 Explore Risk-Adjusted WACC</h2>
+      <p>Learn how companies adjust their discount rate for project-specific risk.</p>
+      <button class="practice-button" onclick="showSection('wacc')">
+        📊 Go to Risk-Adjusted WACC
+      </button>
+    </div>
+
+  </div>
+  </div> <!-- end #hedgingSection -->
 
   <script>
-    // Scroll-triggered animations
-    function animateOnScroll() {
-      const elements = document.querySelectorAll('.animate-on-scroll');
-      
-      elements.forEach(element => {
-        const elementTop = element.getBoundingClientRect().top;
-        const elementVisible = 150;
-        
-        if (elementTop < window.innerHeight - elementVisible) {
-          element.classList.add('visible');
-        }
-      });
-    }
+    /* ============================================================
+       SECTION SWITCHING
+    ============================================================ */
+    function showSection(section) {
+      const waccEl    = document.getElementById('waccSection');
+      const hedgeEl   = document.getElementById('hedgingSection');
+      const waccBtn   = document.getElementById('waccNavBtn');
+      const hedgeBtn  = document.getElementById('hedgingNavBtn');
 
-    // Add scroll event listener
-    window.addEventListener('scroll', animateOnScroll);
-    
-    // Run on page load
-    window.addEventListener('load', animateOnScroll);
-
-    // Add interactive effects to code blocks
-    document.querySelectorAll('code').forEach(code => {
-      code.addEventListener('click', function() {
-        // Create a ripple effect
-        const ripple = document.createElement('span');
-        ripple.style.position = 'absolute';
-        ripple.style.borderRadius = '50%';
-        ripple.style.background = 'rgba(255, 255, 255, 0.6)';
-        ripple.style.transform = 'scale(0)';
-        ripple.style.animation = 'ripple 0.6s linear';
-        ripple.style.pointerEvents = 'none';
-        
-        const rect = this.getBoundingClientRect();
-        const size = Math.max(rect.width, rect.height);
-        ripple.style.width = ripple.style.height = size + 'px';
-        ripple.style.left = (rect.width / 2 - size / 2) + 'px';
-        ripple.style.top = (rect.height / 2 - size / 2) + 'px';
-        
-        this.style.position = 'relative';
-        this.appendChild(ripple);
-        
-        setTimeout(() => {
-          ripple.remove();
-        }, 600);
-      });
-    });
-
-    // Add floating animation to important elements
-    function addFloatingAnimation() {
-      const importantElements = document.querySelectorAll('blockquote, table');
-      
-      importantElements.forEach((element, index) => {
-        element.style.animation += `, float ${3 + index * 0.5}s ease-in-out infinite`;
-      });
-    }
-
-    // Add ripple animation keyframes
-    const style = document.createElement('style');
-    style.textContent = `
-      @keyframes ripple {
-        to {
-          transform: scale(4);
-          opacity: 0;
-        }
-      }
-      
-      @keyframes float {
-        0%, 100% { transform: translateY(0px); }
-        50% { transform: translateY(-5px); }
-      }
-    `;
-    document.head.appendChild(style);
-
-    // Initialize floating animations after a delay
-    setTimeout(addFloatingAnimation, 2000);
-
-    // Add smooth scrolling for better UX
-    document.documentElement.style.scrollBehavior = 'smooth';
-
-    // Add a subtle parallax effect to the background
-    window.addEventListener('scroll', () => {
-      const scrolled = window.pageYOffset;
-      const parallax = document.querySelector('.concept-page');
-      const speed = scrolled * 0.1;
-      
-      parallax.style.transform = `translateY(${speed}px)`;
-    });
-
-    // Practice Questions Functionality
-    document.getElementById('practiceBtn').addEventListener('click', function() {
-      const practiceSection = document.getElementById('practiceSection');
-      const button = this;
-      
-      if (practiceSection.style.display === 'none') {
-        // Show practice section
-        practiceSection.style.display = 'block';
-        setTimeout(() => {
-          practiceSection.classList.add('show');
-        }, 10);
-        
-        // Update button text
-        button.innerHTML = '<span class="emoji">📚</span> Hide Questions';
-        
-        // Scroll to practice section
-        setTimeout(() => {
-          practiceSection.scrollIntoView({ 
-            behavior: 'smooth', 
-            block: 'start' 
-          });
-        }, 300);
+      if (section === 'wacc') {
+        waccEl.classList.add('active');
+        hedgeEl.classList.remove('active');
+        waccBtn.classList.add('active');
+        hedgeBtn.classList.remove('active');
       } else {
-        // Hide practice section
-        practiceSection.classList.remove('show');
-        setTimeout(() => {
-          practiceSection.style.display = 'none';
-        }, 600);
-        
-        // Update button text
-        button.innerHTML = '<span class="emoji">📝</span> Practice Questions';
+        hedgeEl.classList.add('active');
+        waccEl.classList.remove('active');
+        hedgeBtn.classList.add('active');
+        waccBtn.classList.remove('active');
       }
-    });
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      // Re-run reveal for newly shown section
+      setTimeout(runReveal, 100);
+    }
 
-    // Back to top functionality
-    function scrollToTop() {
-      window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
+    /* ============================================================
+       SCROLL-REVEAL ENGINE
+    ============================================================ */
+    function runReveal() {
+      const selectors = '.reveal, .reveal-left, .reveal-right, .stagger-grid, .animate-on-scroll';
+      document.querySelectorAll(selectors).forEach(el => {
+        const rect = el.getBoundingClientRect();
+        if (rect.top < window.innerHeight - 80) {
+          el.classList.add('visible');
+        }
       });
     }
 
-    // Add question numbering animation
-    document.addEventListener('DOMContentLoaded', function() {
-      const questionBoxes = document.querySelectorAll('.question-box');
-      
-      questionBoxes.forEach((box, index) => {
-        box.style.animationDelay = `${index * 0.1}s`;
+    window.addEventListener('scroll', runReveal, { passive: true });
+    window.addEventListener('load', runReveal);
+    document.addEventListener('DOMContentLoaded', () => {
+      // Wrap every table in a .table-wrap div for responsive scroll
+      document.querySelectorAll('table').forEach(t => {
+        if (!t.parentElement.classList.contains('table-wrap')) {
+          const wrap = document.createElement('div');
+          wrap.className = 'table-wrap reveal';
+          t.parentNode.insertBefore(wrap, t);
+          wrap.appendChild(t);
+        }
       });
+
+      // Add reveal classes to key elements
+      document.querySelectorAll(
+        'h1, h2, .formula-box, .info-box, .warning-box, .hedging-tip, blockquote'
+      ).forEach((el, i) => {
+        if (!el.classList.contains('reveal') && !el.classList.contains('reveal-left')) {
+          el.classList.add('reveal');
+          el.style.transitionDelay = (i % 4) * 0.07 + 's';
+        }
+      });
+
+      document.querySelectorAll('.step-box').forEach((el, i) => {
+        el.classList.add('reveal-left');
+        el.style.transitionDelay = i * 0.08 + 's';
+      });
+
+      document.querySelectorAll('.question-box').forEach((el, i) => {
+        el.classList.add('reveal');
+        el.style.transitionDelay = i * 0.06 + 's';
+      });
+
+      document.querySelectorAll('.comparison-table').forEach(el => {
+        el.classList.add('stagger-grid');
+      });
+
+      runReveal();
+    });
+
+    /* ============================================================
+       PRACTICE QUESTIONS TOGGLE
+    ============================================================ */
+    document.getElementById('practiceBtn').addEventListener('click', function () {
+      const section = document.getElementById('practiceSection');
+      const btn = this;
+
+      if (section.style.display === 'none') {
+        section.style.display = 'block';
+        requestAnimationFrame(() => {
+          section.classList.add('show');
+          runReveal();
+        });
+        btn.innerHTML = '<span class="emoji">📚</span> Hide Questions';
+        setTimeout(() => section.scrollIntoView({ behavior: 'smooth', block: 'start' }), 300);
+      } else {
+        section.classList.remove('show');
+        setTimeout(() => { section.style.display = 'none'; }, 500);
+        btn.innerHTML = '<span class="emoji">📝</span> Practice Questions';
+      }
+    });
+
+    /* ============================================================
+       BACK TO TOP
+    ============================================================ */
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    /* ============================================================
+       CODE BLOCK CLICK RIPPLE
+    ============================================================ */
+    document.addEventListener('click', function (e) {
+      if (e.target.tagName === 'CODE') {
+        const el = e.target;
+        const ripple = document.createElement('span');
+        ripple.style.cssText = `
+          position:absolute; border-radius:50%;
+          background:rgba(255,255,255,0.55);
+          transform:scale(0); animation:ripple 0.55s linear;
+          pointer-events:none; width:60px; height:60px;
+          left:50%; top:50%; margin:-30px 0 0 -30px;
+        `;
+        el.style.position = 'relative';
+        el.style.overflow = 'hidden';
+        el.appendChild(ripple);
+        setTimeout(() => ripple.remove(), 560);
+      }
     });
   </script>
 </body>
