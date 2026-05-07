@@ -54,6 +54,12 @@
       color: white; box-shadow: 0 6px 20px rgba(14,165,233,0.35);
     }
 
+    .nav-btn.dividend-btn { border-color: #10b981; color: #10b981; }
+    .nav-btn.dividend-btn::after { background: #10b981; }
+    .nav-btn.dividend-btn:hover, .nav-btn.dividend-btn.active {
+      color: white; box-shadow: 0 6px 20px rgba(16,185,129,0.35);
+    }
+
     /* ===== PAGE SECTIONS ===== */
     .page-section { display: none; }
     .page-section.active { display: block; animation: pageFadeIn 0.5s ease-out; }
@@ -70,151 +76,82 @@
       box-shadow: 0 8px 40px rgba(79,70,229,0.1), 0 2px 8px rgba(0,0,0,0.04);
     }
 
+    @media (max-width: 640px) {
+      .concept-page { padding: 28px 20px; margin: 16px; }
+      .comparison-table { grid-template-columns: 1fr !important; }
+    }
+
     /* ===== MOBILE RESPONSIVE ===== */
     @media (max-width: 768px) {
       body { padding: 0; }
-      
+
       .top-nav {
         flex-wrap: wrap;
-        padding: 12px 16px;
-        gap: 10px;
+        padding: 12px 14px;
+        gap: 8px;
       }
-      
+
       .nav-logo { display: none; }
-      
+
       .nav-btn {
-        flex: 1;
-        min-width: 140px;
-        padding: 10px 20px;
-        font-size: 0.88rem;
+        flex: 1 1 calc(50% - 8px);
+        min-width: 120px;
+        padding: 9px 14px;
+        font-size: 0.83rem;
+        text-align: center;
       }
-      
+
       .concept-page {
-        padding: 32px 20px;
-        margin: 16px 12px;
-        border-radius: 16px;
+        padding: 28px 18px;
+        margin: 14px 10px;
+        border-radius: 14px;
       }
-      
-      h1 {
-        font-size: 1.4rem;
-        margin-top: 32px;
-        padding-left: 12px;
-        border-left-width: 4px;
+
+      h1 { font-size: 1.35rem; margin-top: 30px; padding-left: 12px; border-left-width: 4px; }
+      h1:first-child { font-size: 1.45rem; }
+      h2 { font-size: 1.02rem; margin-top: 20px; }
+      h3 { font-size: 0.94rem; margin-top: 14px; }
+
+      p, ul, ol { font-size: 0.91rem; line-height: 1.7; }
+
+      .formula-box { padding: 16px 14px; font-size: 0.95rem; overflow-x: auto; }
+
+      .comparison-table { grid-template-columns: 1fr !important; gap: 10px; }
+      .comparison-card { padding: 14px 12px; }
+
+      table { font-size: 0.82rem; display: block; overflow-x: auto; white-space: nowrap; }
+      th, td { padding: 9px 12px; font-size: 0.8rem; }
+
+      .step-box, .info-box, .warning-box, .hedging-tip, .dividend-highlight {
+        padding: 13px 15px; font-size: 0.89rem;
       }
-      
-      h1:first-child { font-size: 1.5rem; }
-      
-      h2 { font-size: 1.05rem; margin-top: 22px; }
-      h3 { font-size: 0.96rem; margin-top: 16px; }
-      
-      p, ul, ol { font-size: 0.93rem; line-height: 1.7; }
-      
-      .formula-box {
-        padding: 18px 16px;
-        font-size: 1rem;
-        overflow-x: auto;
-      }
-      
-      .comparison-table {
-        grid-template-columns: 1fr !important;
-        gap: 12px;
-      }
-      
-      .comparison-card {
-        padding: 16px 14px;
-      }
-      
-      table {
-        font-size: 0.85rem;
-        display: block;
-        overflow-x: auto;
-        white-space: nowrap;
-      }
-      
-      th, td {
-        padding: 9px 12px;
-        font-size: 0.82rem;
-      }
-      
-      .step-box, .info-box, .warning-box, .hedging-tip {
-        padding: 14px 16px;
-        font-size: 0.91rem;
-      }
-      
-      .question-box {
-        padding: 20px 18px;
-      }
-      
-      .navigation-section {
-        padding: 28px 20px;
-        margin: 28px 0 0;
-      }
-      
-      .navigation-section h2 { font-size: 1.2rem; }
-      
-      .practice-button {
-        padding: 12px 28px;
-        font-size: 0.95rem;
-      }
-      
-      .section-header {
-        padding: 14px 18px;
-        margin: 24px 0 16px;
-      }
-      
-      .section-header h2 { font-size: 1rem; }
-      
-      .task-box {
-        padding: 12px 16px;
-        font-size: 0.88rem;
-      }
-      
-      .completion-box {
-        padding: 28px 20px;
-      }
-      
-      .completion-box h3 { font-size: 1.2rem; }
-      
-      code {
-        font-size: 0.86rem;
-        padding: 3px 8px;
-      }
-      
-      blockquote {
-        padding: 12px 16px;
-        font-size: 0.91rem;
-      }
-      
-      hr { margin: 32px 0; }
+
+      .question-box { padding: 18px 16px; }
+
+      .navigation-section { padding: 26px 18px; margin: 26px 0 0; }
+      .navigation-section h2 { font-size: 1.15rem; }
+
+      .practice-button { padding: 11px 22px; font-size: 0.9rem; margin: 10px 4px 0; }
+
+      .section-header { padding: 13px 16px; margin: 22px 0 14px; }
+      .section-header h2 { font-size: 0.96rem; }
+
+      .task-box { padding: 11px 14px; font-size: 0.86rem; }
+      .completion-box { padding: 26px 18px; }
+      .completion-box h3 { font-size: 1.15rem; }
+
+      code { font-size: 0.84rem; padding: 3px 7px; }
+      blockquote { padding: 11px 15px; font-size: 0.89rem; }
+      hr { margin: 28px 0; }
     }
-    
+
     @media (max-width: 480px) {
-      .concept-page {
-        padding: 24px 16px;
-        margin: 12px 8px;
-      }
-      
-      h1 { font-size: 1.3rem; }
-      h1:first-child { font-size: 1.4rem; }
-      
-      .nav-btn {
-        font-size: 0.82rem;
-        padding: 9px 16px;
-      }
-      
-      .formula-box {
-        font-size: 0.92rem;
-        padding: 16px 14px;
-      }
-      
-      table {
-        font-size: 0.8rem;
-      }
-      
-      th, td {
-        padding: 8px 10px;
-        font-size: 0.78rem;
-      }
+      .concept-page { padding: 22px 14px; margin: 10px 6px; }
+      h1 { font-size: 1.22rem; }
+      h1:first-child { font-size: 1.32rem; }
+      .nav-btn { font-size: 0.78rem; padding: 8px 12px; }
+      .formula-box { font-size: 0.88rem; padding: 14px 12px; }
+      th, td { padding: 7px 9px; font-size: 0.75rem; }
     }
 
     /* ===== HEADINGS ===== */
@@ -438,6 +375,44 @@
     }
     .hedging-tip:hover { transform: translateX(4px); box-shadow: 0 4px 16px rgba(34,197,94,0.2); }
 
+    /* ===== DIVIDEND PAGE OVERRIDES ===== */
+    .dividend-page h1 { border-left-color: #10b981; }
+    .dividend-page h2 { color: #047857; }
+    .dividend-page h3 { color: #059669; }
+    .dividend-page ul li::before { color: #10b981; }
+
+    .dividend-page .formula-box {
+      background: linear-gradient(135deg, #f0fdf4, #dcfce7);
+      border-color: #10b981; color: #064e3b;
+    }
+    .dividend-page .formula-box:hover { box-shadow: 0 6px 24px rgba(16,185,129,0.25); }
+
+    .dividend-page th { background: linear-gradient(135deg, #10b981, #34d399); }
+    .dividend-page tr:hover td { background: #d1fae5; color: #047857; }
+    .dividend-page .step-box { border-left-color: #10b981; }
+    .dividend-page .step-box:hover { background: #f0fdf4; }
+
+    .dividend-page blockquote { background: #f0fdf4; border-left-color: #10b981; color: #064e3b; }
+    .dividend-page blockquote:hover { background: #dcfce7; box-shadow: 0 4px 14px rgba(16,185,129,0.18); }
+
+    .dividend-page .navigation-section { background: linear-gradient(135deg, #10b981, #047857); }
+    .dividend-page .practice-button { color: #047857; }
+    .dividend-page .practice-button:hover { background: #f0fdf4; }
+
+    .dividend-page .comparison-card:hover {
+      border-color: #10b981; background: #f0fdf4;
+      box-shadow: 0 12px 28px rgba(16,185,129,0.15);
+    }
+    .dividend-page .comparison-card h4 { color: #047857; }
+
+    .dividend-highlight {
+      background: linear-gradient(135deg, #fef3c7, #fde68a);
+      border-left: 4px solid #f59e0b; padding: 16px 20px;
+      border-radius: 10px; margin: 18px 0; color: #78350f;
+      font-weight: 600; font-size: 0.94rem; line-height: 1.7; transition: all 0.3s ease;
+    }
+    .dividend-highlight:hover { transform: translateX(4px); box-shadow: 0 4px 16px rgba(245,158,11,0.2); }
+
     /* ===== SCROLL-REVEAL ANIMATIONS ===== */
     .reveal {
       opacity: 0; transform: translateY(30px);
@@ -490,6 +465,9 @@
     </button>
     <button class="nav-btn hedging-btn" id="hedgingNavBtn" onclick="showSection('hedging')">
       🛡️ Hedging
+    </button>
+    <button class="nav-btn dividend-btn" id="dividendNavBtn" onclick="showSection('dividend')">
+      💰 Dividend Policy
     </button>
   </nav>
 
@@ -1257,27 +1235,493 @@
   </div>
   </div> <!-- end #hedgingSection -->
 
+  <!-- ===== DIVIDEND POLICY SECTION ===== -->
+  <div id="dividendSection" class="page-section">
+  <div class="concept-page dividend-page">
+
+    <h1 class="pulse-on-hover">💰 Dividend Policy: Complete ACCA Guide</h1>
+
+    <div class="info-box reveal">
+      Dividend Policy is a core topic in <strong>ACCA Financial Management (FM)</strong>. It covers how companies decide how much profit to distribute to shareholders versus retain for growth — a decision that directly impacts <strong>shareholder wealth and company value</strong>.
+    </div>
+
+    <hr />
+    <h1>📌 Meaning of Dividend</h1>
+
+    <p>A <strong>dividend</strong> is the portion of company profits distributed to shareholders as a reward for investing in the company. Dividends are usually paid in cash, periodically (annually or as interim payments).</p>
+
+    <div class="formula-box reveal">
+      Dividend = Number of Shares × Dividend Per Share
+    </div>
+
+    <div class="step-box">
+      <h3>Example</h3>
+      <p>A company declares <strong>₹8 dividend per share</strong>. An investor owns <strong>1,000 shares</strong>.</p>
+      <p style="margin-top:8px; font-size:1.05rem;"><strong>Dividend = 1,000 × ₹8 = ₹8,000</strong></p>
+    </div>
+
+    <hr />
+    <h1>🎯 Objective of Dividend Policy</h1>
+
+    <div class="dividend-highlight">
+      <strong>Primary Objective:</strong> To maximize shareholder wealth while maintaining sufficient funds for future growth.
+    </div>
+
+    <p>This creates a fundamental conflict between what shareholders want and what the company needs:</p>
+
+    <table>
+      <thead><tr><th>Shareholders Want</th><th>Company Needs</th></tr></thead>
+      <tbody>
+        <tr><td>Higher dividends</td><td>More retained earnings</td></tr>
+        <tr><td>Regular income</td><td>Reinvestment funds</td></tr>
+        <tr><td>Lower risk</td><td>Business expansion</td></tr>
+      </tbody>
+    </table>
+
+    <div class="comparison-table stagger-grid">
+      <div class="comparison-card">
+        <h4>❌ Poor Policy</h4>
+        <p>Reduces share price</p>
+        <p>Dissatisfies investors</p>
+        <p>Creates liquidity problems</p>
+      </div>
+      <div class="comparison-card">
+        <h4>✅ Good Policy</h4>
+        <p>Builds investor confidence</p>
+        <p>Supports long-term growth</p>
+        <p>Maintains financial stability</p>
+      </div>
+    </div>
+
+    <hr />
+    <h1>📦 Forms of Dividends</h1>
+
+    <div class="step-box reveal-left">
+      <h3>1. Cash Dividend</h3>
+      <p>Most common form. Company pays cash directly to shareholders.</p>
+      <p><strong>Example:</strong> ₹5 per share cash dividend.</p>
+    </div>
+
+    <div class="step-box reveal-left">
+      <h3>2. Scrip Dividend (Bonus Shares)</h3>
+      <p>Instead of cash, additional shares are issued. Useful when the company wants to <strong>conserve cash</strong>.</p>
+    </div>
+
+    <div class="step-box reveal-left">
+      <h3>3. Stock Split</h3>
+      <p>Existing shares are divided into smaller units.</p>
+      <p><strong>Example:</strong> 1 share becomes 2 shares.</p>
+      <p><strong>Purpose:</strong> Improve affordability and increase liquidity.</p>
+    </div>
+
+    <div class="step-box reveal-left">
+      <h3>4. Special Dividend</h3>
+      <p>One-time extra dividend, usually paid when the company earns abnormal profits or sells assets.</p>
+    </div>
+
+    <hr />
+    <h1>📋 Types of Dividend Policies</h1>
+
+    <!-- Policy 1 -->
+    <div class="question-box reveal">
+      <h2>1. Constant Dividend Per Share Policy</h2>
+      <p>The company pays a <strong>fixed dividend per share every year</strong> regardless of profit fluctuations.</p>
+
+      <table>
+        <thead><tr><th>Year</th><th>EPS</th><th>Dividend</th></tr></thead>
+        <tbody>
+          <tr><td>1</td><td>₹15</td><td>₹5</td></tr>
+          <tr><td>2</td><td>₹10</td><td>₹5</td></tr>
+          <tr><td>3</td><td>₹20</td><td>₹5</td></tr>
+        </tbody>
+      </table>
+
+      <div class="comparison-table stagger-grid" style="margin-top:16px;">
+        <div class="comparison-card">
+          <h4>✅ Advantages</h4>
+          <p>Investor confidence</p>
+          <p>Stable share price</p>
+          <p>Positive company image</p>
+        </div>
+        <div class="comparison-card">
+          <h4>❌ Disadvantages</h4>
+          <p>Pressure during low profits</p>
+          <p>May need to borrow to pay</p>
+          <p>Reduced financial flexibility</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Policy 2 -->
+    <div class="question-box reveal">
+      <h2>2. Constant Payout Ratio Policy</h2>
+      <p>The company pays a <strong>fixed percentage of earnings</strong> as dividend.</p>
+
+      <div class="formula-box" style="margin:14px 0;">
+        Dividend = Profit × Payout Ratio
+      </div>
+
+      <p><strong>Example:</strong> 40% payout ratio</p>
+      <table>
+        <thead><tr><th>Profit</th><th>Dividend (40%)</th></tr></thead>
+        <tbody>
+          <tr><td>₹10 lakh</td><td>₹4 lakh</td></tr>
+          <tr><td>₹5 lakh</td><td>₹2 lakh</td></tr>
+        </tbody>
+      </table>
+
+      <div class="comparison-table stagger-grid" style="margin-top:16px;">
+        <div class="comparison-card">
+          <h4>✅ Advantages</h4>
+          <p>Reflects profitability</p>
+          <p>Financially flexible</p>
+        </div>
+        <div class="comparison-card">
+          <h4>❌ Disadvantages</h4>
+          <p>Unstable dividends</p>
+          <p>Investors dislike uncertainty</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Policy 3 -->
+    <div class="question-box reveal">
+      <h2>3. Residual Dividend Policy</h2>
+      <p>Profitable investments are financed first. Remaining profits are distributed as dividends.</p>
+
+      <div class="formula-box" style="margin:14px 0;">
+        Dividend = Earnings − Retained Earnings Required
+      </div>
+
+      <div class="step-box" style="margin:14px 0;">
+        <h3>Example</h3>
+        <p>Profit after tax = ₹20 lakh</p>
+        <p>Investment needed = ₹15 lakh</p>
+        <p><strong>Dividend = 20 − 15 = ₹5 lakh</strong></p>
+      </div>
+
+      <div class="comparison-table stagger-grid" style="margin-top:16px;">
+        <div class="comparison-card">
+          <h4>✅ Advantages</h4>
+          <p>Supports growth</p>
+          <p>Reduces external financing</p>
+          <p>Wealth maximization</p>
+        </div>
+        <div class="comparison-card">
+          <h4>❌ Disadvantages</h4>
+          <p>Highly unstable dividend</p>
+          <p>Investors may be dissatisfied</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Policy 4 -->
+    <div class="question-box reveal">
+      <h2>4. Progressive Dividend Policy</h2>
+      <p>The company <strong>gradually increases dividends</strong> over time, even if profits fluctuate slightly.</p>
+
+      <table>
+        <thead><tr><th>Year</th><th>Dividend</th></tr></thead>
+        <tbody>
+          <tr><td>1</td><td>₹4.00</td></tr>
+          <tr><td>2</td><td>₹4.50</td></tr>
+          <tr><td>3</td><td>₹5.00</td></tr>
+        </tbody>
+      </table>
+
+      <div class="comparison-table stagger-grid" style="margin-top:16px;">
+        <div class="comparison-card">
+          <h4>✅ Advantages</h4>
+          <p>Strong positive signal</p>
+          <p>Attracts long-term investors</p>
+        </div>
+        <div class="comparison-card">
+          <h4>❌ Disadvantages</h4>
+          <p>Difficult during recession</p>
+          <p>Cuts damage market confidence</p>
+        </div>
+      </div>
+    </div>
+
+    <hr />
+    <h1>⚙️ Factors Affecting Dividend Policy</h1>
+
+    <p>This is a <strong>major ACCA theory area</strong>. Know all factors well.</p>
+
+    <div class="step-box reveal-left">
+      <h3>1. Profitability</h3>
+      <p>Higher sustainable profits → Higher dividends. Low profits → Lower or no dividends.</p>
+    </div>
+
+    <div class="step-box reveal-left">
+      <h3>2. Liquidity</h3>
+      <p>Profit ≠ Cash. A company may show accounting profit but lack actual cash. Dividends require <strong>real cash outflow</strong> — so liquidity is critical.</p>
+    </div>
+
+    <div class="step-box reveal-left">
+      <h3>3. Growth Opportunities</h3>
+      <p>Fast-growing firms retain earnings for expansion, R&amp;D, and new projects.</p>
+      <p><strong>Example:</strong> Technology companies usually pay lower dividends.</p>
+    </div>
+
+    <div class="step-box reveal-left">
+      <h3>4. Shareholder Preferences</h3>
+      <table style="margin-top:10px;">
+        <thead><tr><th>Investor Type</th><th>Preference</th></tr></thead>
+        <tbody>
+          <tr><td>Income Investors</td><td>Regular dividends</td></tr>
+          <tr><td>Growth Investors</td><td>Retained earnings &amp; capital appreciation</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="step-box reveal-left">
+      <h3>5. Legal Restrictions</h3>
+      <p>Many countries restrict dividends if the company becomes insolvent or capital is impaired. Dividends are usually paid only from <strong>distributable profits</strong>.</p>
+    </div>
+
+    <div class="step-box reveal-left">
+      <h3>6. Taxation</h3>
+      <p>If dividend tax is high → Investors may prefer capital gains.<br>
+      If dividend tax is low → Investors may prefer dividends.</p>
+    </div>
+
+    <div class="step-box reveal-left">
+      <h3>7. Access to Capital Markets</h3>
+      <p>Large firms can easily raise funds externally → may distribute more dividends.<br>
+      Small firms → retain more earnings.</p>
+    </div>
+
+    <div class="step-box reveal-left">
+      <h3>8. Economic Conditions</h3>
+      <p>During recession or uncertainty, firms conserve cash and dividend reductions occur.</p>
+    </div>
+
+    <div class="step-box reveal-left">
+      <h3>9. Inflation</h3>
+      <p>Inflation increases working capital needs and replacement cost of assets — thus firms may retain more profits.</p>
+    </div>
+
+    <hr />
+    <h1>🧪 Dividend Theories</h1>
+
+    <div class="dividend-highlight">
+      Very important for ACCA exams — you must be able to explain, compare, and critically evaluate these theories.
+    </div>
+
+    <!-- MM Theory -->
+    <div class="question-box reveal">
+      <h2>1. Modigliani &amp; Miller Theory (MM Theory)</h2>
+      <div class="info-box" style="margin:12px 0;">
+        <strong>Main Argument:</strong> Dividend policy is <em>irrelevant</em> to shareholder wealth. Value depends on investment decisions and earnings power — NOT dividends.
+      </div>
+
+      <h3>Assumptions</h3>
+      <ul>
+        <li>Perfect capital markets</li>
+        <li>No taxes</li>
+        <li>No transaction costs</li>
+        <li>Perfect information</li>
+        <li>Rational investors</li>
+      </ul>
+
+      <h3>Logic</h3>
+      <p>If investors want cash → they can sell shares.<br>
+      If they want reinvestment → company retains earnings.<br>
+      Therefore dividend policy supposedly does not matter.</p>
+
+      <div class="warning-box" style="margin-top:14px;">
+        <strong>Criticism:</strong> The theory is unrealistic because taxes exist, information asymmetry exists, investors prefer certainty, and transaction costs exist.
+      </div>
+    </div>
+
+    <!-- Gordon's Theory -->
+    <div class="question-box reveal">
+      <h2>2. Gordon's Dividend Growth Theory</h2>
+      <div class="info-box" style="margin:12px 0;">
+        <strong>Main Argument:</strong> Investors prefer <em>certain current dividends</em> over uncertain future gains.
+      </div>
+      <blockquote>
+        🐦 "Bird-in-the-Hand Theory" — A bird in hand today is worth more than uncertain future birds.
+      </blockquote>
+      <p>Thus: Higher dividends reduce risk perception and share price may rise.</p>
+    </div>
+
+    <!-- Signaling Theory -->
+    <div class="question-box reveal">
+      <h2>3. Signaling Theory</h2>
+      <p>Dividend announcements <strong>signal management expectations</strong> to the market.</p>
+      <table>
+        <thead><tr><th>Event</th><th>Signal</th><th>Market Reaction</th></tr></thead>
+        <tbody>
+          <tr><td>Dividend Increase</td><td>Strong future profits expected</td><td>Share price often rises ↑</td></tr>
+          <tr><td>Dividend Reduction</td><td>Possible future financial trouble</td><td>Share price often falls sharply ↓</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Agency Theory -->
+    <div class="question-box reveal">
+      <h2>4. Agency Theory</h2>
+      <p>Managers may misuse retained earnings through wasteful spending, poor investments, or personal benefits.</p>
+      <div class="hedging-tip">
+        Paying dividends reduces free cash under management control → Agency conflict decreases → Shareholders benefit.
+      </div>
+    </div>
+
+    <hr />
+    <h1>📐 Important Formulas</h1>
+
+    <div class="step-box reveal">
+      <h3>Dividend Payout Ratio</h3>
+      <div class="formula-box" style="margin:10px 0; font-size:1rem;">
+        Payout Ratio = (Dividend ÷ Profit After Tax) × 100
+      </div>
+    </div>
+
+    <div class="step-box reveal">
+      <h3>Retention Ratio</h3>
+      <div class="formula-box" style="margin:10px 0; font-size:1rem;">
+        Retention Ratio = 1 − Dividend Payout Ratio
+      </div>
+    </div>
+
+    <div class="step-box reveal">
+      <h3>Dividend Yield</h3>
+      <div class="formula-box" style="margin:10px 0; font-size:1rem;">
+        Dividend Yield = (Dividend Per Share ÷ Market Price Per Share) × 100
+      </div>
+      <p style="margin-top:10px;"><strong>Example:</strong> Dividend per share = ₹8, Market price = ₹100</p>
+      <p><strong>Dividend Yield = (8 ÷ 100) × 100 = 8%</strong></p>
+    </div>
+
+    <hr />
+    <h1>🔢 Practical Example</h1>
+
+    <div class="step-box reveal">
+      <p><strong>Profit After Tax = ₹50,00,000</strong></p>
+      <p><strong>Dividend Payout Ratio = 30%</strong></p>
+      <br>
+      <p>Dividend Paid = ₹50,00,000 × 30% = <strong>₹15,00,000</strong></p>
+      <p>Retained Earnings = ₹50,00,000 − ₹15,00,000 = <strong>₹35,00,000</strong></p>
+      <br>
+      <p>The retained amount may finance: Expansion · Machinery · New projects</p>
+    </div>
+
+    <hr />
+    <h1>🌍 Real-World Understanding</h1>
+
+    <div class="comparison-table stagger-grid">
+      <div class="comparison-card">
+        <h4>🏭 Mature Companies</h4>
+        <p>Usually pay <strong>higher dividends</strong></p>
+        <p>Examples: Utility companies, FMCG companies</p>
+      </div>
+      <div class="comparison-card">
+        <h4>🚀 Growth Companies</h4>
+        <p>Retain <strong>more earnings</strong></p>
+        <p>Examples: Technology startups</p>
+      </div>
+    </div>
+
+    <hr />
+    <h1>✅ Advantages vs ❌ Disadvantages of Paying Dividends</h1>
+
+    <table>
+      <thead><tr><th>Advantages of Paying Dividends</th><th>Disadvantages of High Dividends</th></tr></thead>
+      <tbody>
+        <tr><td>Builds investor confidence</td><td>Reduces funds for growth</td></tr>
+        <tr><td>Attracts income investors</td><td>May increase borrowing</td></tr>
+        <tr><td>Positive market signal</td><td>Dividend cuts damage reputation</td></tr>
+        <tr><td>Reduces agency problems</td><td>May lose expansion opportunities</td></tr>
+      </tbody>
+    </table>
+
+    <hr />
+    <h1>📝 Key ACCA Exam Areas</h1>
+
+    <div class="comparison-table stagger-grid">
+      <div class="comparison-card">
+        <h4>📖 Theory Questions</h4>
+        <p>Explain factors affecting dividend policy</p>
+        <p>Discuss MM theory</p>
+        <p>Compare dividend theories</p>
+      </div>
+      <div class="comparison-card">
+        <h4>🔢 Numerical Questions</h4>
+        <p>Calculate dividend payout ratio</p>
+        <p>Calculate retained earnings</p>
+        <p>Evaluate dividend capacity</p>
+      </div>
+      <div class="comparison-card">
+        <h4>💬 Discussion Questions</h4>
+        <p>Should a company increase dividends?</p>
+        <p>Impact on shareholder wealth</p>
+        <p>Market reaction analysis</p>
+      </div>
+    </div>
+
+    <hr />
+    <h1>🏁 Final ACCA Conclusion</h1>
+
+    <div class="info-box reveal">
+      <strong>Dividend policy is a strategic financial decision balancing:</strong><br><br>
+      <strong>1. Current Shareholder Returns</strong> — through dividends<br>
+      <strong>2. Future Business Growth</strong> — through retained earnings<br><br>
+      There is no perfect universal policy. The ideal dividend policy depends on profitability, cash flow, growth opportunities, shareholder expectations, economic conditions, and access to finance.
+    </div>
+
+    <div class="dividend-highlight reveal">
+      In ACCA Financial Management, you are expected not only to memorize theories but also to <strong>critically evaluate</strong> how dividend policy affects: Shareholder wealth · Company value · Financial strategy · Market perception
+    </div>
+
+    <hr />
+    <div class="navigation-section">
+      <h2>📊 Explore Other Topics</h2>
+      <p>Continue your ACCA revision with Risk-Adjusted WACC or Hedging.</p>
+      <button class="practice-button" onclick="showSection('wacc')" style="margin-right:10px;">
+        📊 Risk-Adjusted WACC
+      </button>
+      <button class="practice-button" onclick="showSection('hedging')">
+        🛡️ Hedging
+      </button>
+    </div>
+
+  </div>
+  </div> <!-- end #dividendSection -->
+
   <script>
     /* ============================================================
        SECTION SWITCHING
     ============================================================ */
     function showSection(section) {
-      const waccEl    = document.getElementById('waccSection');
-      const hedgeEl   = document.getElementById('hedgingSection');
-      const waccBtn   = document.getElementById('waccNavBtn');
-      const hedgeBtn  = document.getElementById('hedgingNavBtn');
+      const waccEl      = document.getElementById('waccSection');
+      const hedgeEl     = document.getElementById('hedgingSection');
+      const dividendEl  = document.getElementById('dividendSection');
+      const waccBtn     = document.getElementById('waccNavBtn');
+      const hedgeBtn    = document.getElementById('hedgingNavBtn');
+      const dividendBtn = document.getElementById('dividendNavBtn');
 
+      // Remove active from all
+      waccEl.classList.remove('active');
+      hedgeEl.classList.remove('active');
+      dividendEl.classList.remove('active');
+      waccBtn.classList.remove('active');
+      hedgeBtn.classList.remove('active');
+      dividendBtn.classList.remove('active');
+
+      // Add active to selected
       if (section === 'wacc') {
         waccEl.classList.add('active');
-        hedgeEl.classList.remove('active');
         waccBtn.classList.add('active');
-        hedgeBtn.classList.remove('active');
-      } else {
+      } else if (section === 'hedging') {
         hedgeEl.classList.add('active');
-        waccEl.classList.remove('active');
         hedgeBtn.classList.add('active');
-        waccBtn.classList.remove('active');
+      } else if (section === 'dividend') {
+        dividendEl.classList.add('active');
+        dividendBtn.classList.add('active');
       }
+
       window.scrollTo({ top: 0, behavior: 'smooth' });
       // Re-run reveal for newly shown section
       setTimeout(runReveal, 100);
