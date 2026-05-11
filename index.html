@@ -60,6 +60,12 @@
       color: white; box-shadow: 0 6px 20px rgba(16,185,129,0.35);
     }
 
+    .nav-btn.forex-btn { border-color: #f59e0b; color: #d97706; }
+    .nav-btn.forex-btn::after { background: linear-gradient(135deg, #f59e0b, #d97706); }
+    .nav-btn.forex-btn:hover, .nav-btn.forex-btn.active {
+      color: white; box-shadow: 0 6px 20px rgba(245,158,11,0.4);
+    }
+
     /* ===== PAGE SECTIONS ===== */
     .page-section { display: none; }
     .page-section.active { display: block; animation: pageFadeIn 0.5s ease-out; }
@@ -413,6 +419,124 @@
     }
     .dividend-highlight:hover { transform: translateX(4px); box-shadow: 0 4px 16px rgba(245,158,11,0.2); }
 
+    .dividend-highlight:hover { transform: translateX(4px); box-shadow: 0 4px 16px rgba(245,158,11,0.2); }
+
+    /* ===== FOREX PAGE OVERRIDES ===== */
+    .forex-page h1 { border-left-color: #f59e0b; }
+    .forex-page h2 { color: #92400e; }
+    .forex-page h3 { color: #d97706; }
+    .forex-page ul li::before { color: #f59e0b; }
+
+    .forex-page .formula-box {
+      background: linear-gradient(135deg, #fffbeb, #fef3c7);
+      border-color: #f59e0b; color: #78350f;
+    }
+    .forex-page .formula-box:hover { box-shadow: 0 6px 24px rgba(245,158,11,0.3); }
+
+    .forex-page th { background: linear-gradient(135deg, #f59e0b, #fbbf24); }
+    .forex-page tr:hover td { background: #fef3c7; color: #92400e; }
+    .forex-page .step-box { border-left-color: #f59e0b; }
+    .forex-page .step-box:hover { background: #fffbeb; }
+
+    .forex-page blockquote { background: #fffbeb; border-left-color: #f59e0b; color: #78350f; }
+    .forex-page blockquote:hover { background: #fef3c7; box-shadow: 0 4px 14px rgba(245,158,11,0.2); }
+
+    .forex-page .navigation-section { background: linear-gradient(135deg, #f59e0b, #d97706); }
+    .forex-page .practice-button { color: #92400e; }
+    .forex-page .practice-button:hover { background: #fffbeb; }
+
+    .forex-page .comparison-card:hover {
+      border-color: #f59e0b; background: #fffbeb;
+      box-shadow: 0 12px 28px rgba(245,158,11,0.18);
+    }
+    .forex-page .comparison-card h4 { color: #d97706; }
+
+    .forex-tip {
+      background: linear-gradient(135deg, #fffbeb, #fef3c7);
+      border-left: 4px solid #f59e0b; padding: 16px 20px;
+      border-radius: 10px; margin: 18px 0; color: #78350f;
+      font-weight: 600; font-size: 0.94rem; line-height: 1.7; transition: all 0.3s ease;
+    }
+    .forex-tip:hover { transform: translateX(4px); box-shadow: 0 4px 16px rgba(245,158,11,0.25); }
+
+    /* Visual flow boxes */
+    .flow-box {
+      background: linear-gradient(135deg, #1e293b, #334155);
+      color: #f8fafc; font-family: "Courier New", monospace;
+      padding: 22px 28px; border-radius: 14px; margin: 20px 0;
+      font-size: 0.93rem; line-height: 2; letter-spacing: 0.3px;
+      box-shadow: 0 6px 24px rgba(0,0,0,0.18);
+    }
+    .flow-box .flow-arrow { color: #fbbf24; font-weight: 900; }
+    .flow-box .flow-highlight { color: #34d399; font-weight: 700; }
+    .flow-box .flow-danger  { color: #f87171; font-weight: 700; }
+    .flow-box .flow-safe    { color: #60a5fa; font-weight: 700; }
+
+    /* Scenario cards */
+    .scenario-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 20px 0; }
+    @media (max-width: 640px) { .scenario-grid { grid-template-columns: 1fr; } }
+
+    .scenario-card {
+      border-radius: 14px; padding: 20px 18px;
+      transition: all 0.3s ease; position: relative; overflow: hidden;
+    }
+    .scenario-card.bad  { background: linear-gradient(135deg, #fef2f2, #fee2e2); border: 2px solid #fca5a5; }
+    .scenario-card.good { background: linear-gradient(135deg, #f0fdf4, #dcfce7); border: 2px solid #86efac; }
+    .scenario-card h4   { margin-bottom: 10px; font-size: 1rem; }
+    .scenario-card.bad  h4 { color: #dc2626; }
+    .scenario-card.good h4 { color: #16a34a; }
+    .scenario-card p    { font-size: 0.9rem; color: #475569; margin: 4px 0; }
+    .scenario-card .big-num { font-size: 1.5rem; font-weight: 900; margin: 8px 0; }
+    .scenario-card.bad  .big-num { color: #dc2626; }
+    .scenario-card.good .big-num { color: #16a34a; }
+    .scenario-card:hover { transform: translateY(-4px); box-shadow: 0 10px 28px rgba(0,0,0,0.1); }
+
+    /* Method badge */
+    .method-badge {
+      display: inline-block; padding: 4px 14px; border-radius: 50px;
+      font-size: 0.78rem; font-weight: 700; letter-spacing: 0.5px;
+      text-transform: uppercase; margin-bottom: 10px;
+    }
+    .badge-forward  { background: #dbeafe; color: #1d4ed8; }
+    .badge-mmh      { background: #ede9fe; color: #6d28d9; }
+    .badge-futures  { background: #fce7f3; color: #be185d; }
+    .badge-options  { background: #d1fae5; color: #065f46; }
+    .badge-natural  { background: #fef3c7; color: #92400e; }
+
+    /* Timeline */
+    .timeline { position: relative; padding-left: 32px; margin: 20px 0; }
+    .timeline::before {
+      content: ""; position: absolute; left: 10px; top: 0; bottom: 0;
+      width: 3px; background: linear-gradient(180deg, #f59e0b, #fbbf24, #fde68a);
+      border-radius: 3px;
+    }
+    .timeline-item { position: relative; margin-bottom: 20px; }
+    .timeline-item::before {
+      content: ""; position: absolute; left: -26px; top: 6px;
+      width: 14px; height: 14px; border-radius: 50%;
+      background: #f59e0b; border: 3px solid white;
+      box-shadow: 0 0 0 2px #f59e0b;
+    }
+    .timeline-item h4 { color: #d97706; margin-bottom: 4px; font-size: 0.95rem; }
+    .timeline-item p  { color: #475569; font-size: 0.9rem; margin: 0; }
+
+    /* Exposure type cards */
+    .exposure-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 14px; margin: 18px 0; }
+    @media (max-width: 640px) { .exposure-grid { grid-template-columns: 1fr; } }
+    .exposure-card {
+      border-radius: 12px; padding: 18px 14px; text-align: center;
+      transition: all 0.3s ease;
+    }
+    .exposure-card.transaction { background: linear-gradient(135deg, #fef3c7, #fde68a); border: 2px solid #fbbf24; }
+    .exposure-card.translation { background: linear-gradient(135deg, #ede9fe, #ddd6fe); border: 2px solid #a78bfa; }
+    .exposure-card.economic    { background: linear-gradient(135deg, #dbeafe, #bfdbfe); border: 2px solid #60a5fa; }
+    .exposure-card h4 { font-size: 0.95rem; margin-bottom: 8px; }
+    .exposure-card.transaction h4 { color: #92400e; }
+    .exposure-card.translation h4 { color: #5b21b6; }
+    .exposure-card.economic    h4 { color: #1e40af; }
+    .exposure-card p  { font-size: 0.84rem; color: #475569; margin: 0; }
+    .exposure-card:hover { transform: translateY(-5px); box-shadow: 0 10px 24px rgba(0,0,0,0.1); }
+
     /* ===== SCROLL-REVEAL ANIMATIONS ===== */
     .reveal {
       opacity: 0; transform: translateY(30px);
@@ -468,6 +592,9 @@
     </button>
     <button class="nav-btn dividend-btn" id="dividendNavBtn" onclick="showSection('dividend')">
       💰 Dividend Policy
+    </button>
+    <button class="nav-btn forex-btn" id="forexNavBtn" onclick="showSection('forex')">
+      🌐 Forex Hedging
     </button>
   </nav>
 
@@ -1596,7 +1723,7 @@
     </div>
 
     <hr />
-    <h1>🔢 Practical Example</h1>
+    <h1>🔢 Practical Questions Examples</h1>
 
     <div class="step-box reveal">
       <p><strong>Profit After Tax = ₹50,00,000</strong></p>
@@ -1690,6 +1817,505 @@
   </div>
   </div> <!-- end #dividendSection -->
 
+  <!-- ===== FOREX HEDGING SECTION ===== -->
+  <div id="forexSection" class="page-section">
+  <div class="concept-page forex-page">
+
+    <h1 class="pulse-on-hover">🌐 Forex Hedging: Visual & Conceptual Guide</h1>
+
+    <div class="info-box reveal">
+      <strong>Forex hedging</strong> is a critical risk management technique used by businesses operating internationally. Exchange rate fluctuations can significantly affect profitability and cash flows. This guide provides a comprehensive, visual explanation of forex hedging concepts for ACCA students.
+    </div>
+
+    <hr />
+    <h1>🌍 Introduction to Forex Risk</h1>
+
+    <p>In international business, companies often deal with foreign currencies while importing, exporting, borrowing, lending, or investing abroad. Because exchange rates constantly fluctuate, businesses may face <strong>foreign exchange risk (forex risk)</strong>.</p>
+
+    <div class="step-box reveal">
+      <h3>Example</h3>
+      <p>A company in India exporting goods to United States may receive payment in <strong>USD after 3 months</strong>.</p>
+      <p>If the USD weakens during that period, the company will receive <strong>fewer INR</strong> when converting the money.</p>
+      <p>This uncertainty creates a risk known as <strong>transaction exposure</strong>.</p>
+    </div>
+
+    <blockquote class="reveal">
+      To reduce or eliminate this risk, businesses use <strong>hedging techniques</strong>.
+    </blockquote>
+
+    <hr />
+    <h1>📌 Meaning of Hedging</h1>
+
+    <div class="formula-box reveal">
+      Hedging = Financial Strategy to Protect Against Adverse Exchange Rate Movements
+    </div>
+
+    <p><strong>Hedging</strong> is a financial strategy used to protect a business against adverse movements in exchange rates. It involves taking an opposite or balancing position in the financial market so that losses from currency fluctuations are minimized.</p>
+
+    <hr />
+    <h1>🎯 Objectives of Forex Hedging</h1>
+
+    <div class="comparison-table stagger-grid">
+      <div class="comparison-card">
+        <h4>🎯 Reduce Uncertainty</h4>
+        <p>Stabilize future cash flows</p>
+      </div>
+      <div class="comparison-card">
+        <h4>💰 Protect Margins</h4>
+        <p>Safeguard profit margins</p>
+      </div>
+      <div class="comparison-card">
+        <h4>📊 Stabilize Operations</h4>
+        <p>Maintain business stability</p>
+      </div>
+      <div class="comparison-card">
+        <h4>📈 Improve Planning</h4>
+        <p>Better financial budgeting</p>
+      </div>
+      <div class="comparison-card">
+        <h4>🛡️ Avoid Losses</h4>
+        <p>Prevent unexpected losses</p>
+      </div>
+    </div>
+
+    <hr />
+    <h1>📋 Types of Foreign Exchange Exposure</h1>
+
+    <div class="exposure-grid">
+      <div class="exposure-card transaction">
+        <h4>1. Transaction Exposure</h4>
+        <p>Risk from future foreign currency payments or receipts</p>
+        <p style="margin-top:8px;"><strong>Example:</strong> UK company must pay USD 100,000 after 2 months. If USD appreciates, payment cost increases.</p>
+      </div>
+      <div class="exposure-card translation">
+        <h4>2. Translation Exposure</h4>
+        <p>Occurs when foreign subsidiaries' accounts are converted into parent company's currency</p>
+        <p style="margin-top:8px;"><strong>Impact:</strong> Affects consolidated financial statements</p>
+      </div>
+      <div class="exposure-card economic">
+        <h4>3. Economic Exposure</h4>
+        <p>Long-term impact of exchange rate changes on business competitiveness and future cash flows</p>
+        <p style="margin-top:8px;"><strong>Impact:</strong> Strategic business decisions</p>
+      </div>
+    </div>
+
+    <hr />
+    <h1>🔧 Forex Hedging Techniques</h1>
+
+    <div class="forex-tip reveal">
+      <strong>Important for ACCA:</strong> You must understand not just the mechanics of each technique, but also when to use each one, their advantages, disadvantages, and how to calculate outcomes.
+    </div>
+
+    <!-- FORWARD CONTRACT -->
+    <div class="question-box reveal">
+      <span class="method-badge badge-forward">Forward Contract</span>
+      <h2>1. Forward Contract</h2>
+      
+      <p>A forward contract is an agreement with a bank or financial institution to <strong>buy or sell foreign currency at a fixed exchange rate on a future date</strong>.</p>
+
+      <h3>How it Works</h3>
+      <div class="timeline">
+        <div class="timeline-item">
+          <h4>TODAY</h4>
+          <p>Indian importer must pay USD 50,000 after 3 months</p>
+          <p>Current spot rate = ₹83/USD</p>
+          <p>Bank offers forward rate = ₹84/USD</p>
+          <p><strong>Company locks the rate at ₹84</strong></p>
+        </div>
+        <div class="timeline-item">
+          <h4>AFTER 3 MONTHS</h4>
+          <p>Even if market rate becomes ₹87/USD, company still pays at ₹84/USD</p>
+          <p><strong>Risk eliminated!</strong></p>
+        </div>
+      </div>
+
+      <h3>Visual Example</h3>
+      <div class="scenario-grid">
+        <div class="scenario-card bad">
+          <h4>❌ Without Hedge</h4>
+          <p>Market rate rises to ₹87/USD</p>
+          <div class="big-num">₹43,50,000</div>
+          <p>Extra cost: ₹2,00,000</p>
+        </div>
+        <div class="scenario-card good">
+          <h4>✅ With Forward Hedge</h4>
+          <p>Locked rate at ₹84/USD</p>
+          <div class="big-num">₹42,00,000</div>
+          <p>Protected from loss!</p>
+        </div>
+      </div>
+
+      <table>
+        <thead><tr><th>Advantages</th><th>Disadvantages</th></tr></thead>
+        <tbody>
+          <tr><td>✅ Eliminates uncertainty</td><td>❌ Cannot benefit from favorable movements</td></tr>
+          <tr><td>✅ Simple and commonly used</td><td>❌ Contract is obligatory</td></tr>
+          <tr><td>✅ Protects against adverse movements</td><td>❌ Opportunity cost if rate becomes favorable</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- MONEY MARKET HEDGE -->
+    <div class="question-box reveal">
+      <span class="method-badge badge-mmh">Money Market Hedge</span>
+      <h2>2. Money Market Hedge</h2>
+      
+      <p>A money market hedge uses <strong>borrowing and lending</strong> to eliminate forex risk. It involves borrowing one currency, converting it immediately, and investing in another currency.</p>
+
+      <h3>Mechanism</h3>
+      <div class="flow-box">
+        <div>STEP 1 <span class="flow-arrow">→</span> Company will receive USD after 3 months</div>
+        <div>STEP 2 <span class="flow-arrow">→</span> <span class="flow-highlight">Borrow USD now</span></div>
+        <div>STEP 3 <span class="flow-arrow">→</span> <span class="flow-highlight">Convert into local currency</span></div>
+        <div>STEP 4 <span class="flow-arrow">→</span> <span class="flow-highlight">Invest locally</span></div>
+        <div>STEP 5 <span class="flow-arrow">→</span> Use future USD receipt to repay USD loan</div>
+        <div style="margin-top:12px; color:#34d399; font-weight:900;">RESULT: Future exchange rate locked indirectly!</div>
+      </div>
+
+      <table>
+        <thead><tr><th>Advantages</th><th>Disadvantages</th></tr></thead>
+        <tbody>
+          <tr><td>✅ Useful when forward contracts unavailable</td><td>❌ More complex</td></tr>
+          <tr><td>✅ Flexible</td><td>❌ Involves interest costs</td></tr>
+          <tr><td>✅ Locks effective exchange rate</td><td>❌ Requires access to money markets</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- CURRENCY FUTURES -->
+    <div class="question-box reveal">
+      <span class="method-badge badge-futures">Currency Futures</span>
+      <h2>3. Currency Futures</h2>
+      
+      <p>Currency futures are <strong>standardized contracts traded on exchanges</strong> to buy or sell currency at a future date. They work similarly to forward contracts but are exchange-traded.</p>
+
+      <h3>Features</h3>
+      <ul>
+        <li>Standardized contract size</li>
+        <li>Traded on organized exchanges</li>
+        <li>Daily settlement (marking to market)</li>
+        <li>Lower default risk</li>
+      </ul>
+
+      <table>
+        <thead><tr><th>Advantages</th><th>Disadvantages</th></tr></thead>
+        <tbody>
+          <tr><td>✅ Lower default risk</td><td>❌ Less flexible</td></tr>
+          <tr><td>✅ High liquidity</td><td>❌ Standardized amounts may not match exact requirement</td></tr>
+          <tr><td>✅ Transparent pricing</td><td>❌ Basis risk (mismatch between hedge and exposure)</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- CURRENCY OPTIONS -->
+    <div class="question-box reveal">
+      <span class="method-badge badge-options">Currency Options</span>
+      <h2>4. Currency Options</h2>
+      
+      <p>A currency option gives the holder the <strong>right but not the obligation</strong> to buy or sell currency at a predetermined rate.</p>
+
+      <h3>Types of Options</h3>
+      <div class="scenario-grid">
+        <div class="scenario-card good">
+          <h4>📞 Call Option</h4>
+          <p><strong>Right to BUY currency</strong></p>
+          <p style="margin-top:10px;">Used by: <strong>Importers</strong></p>
+          <p>Protection against: Currency appreciation</p>
+        </div>
+        <div class="scenario-card good">
+          <h4>📉 Put Option</h4>
+          <p><strong>Right to SELL currency</strong></p>
+          <p style="margin-top:10px;">Used by: <strong>Exporters</strong></p>
+          <p>Protection against: Currency depreciation</p>
+        </div>
+      </div>
+
+      <h3>Why Options are Powerful</h3>
+      <div class="forex-tip">
+        <strong>Flexibility:</strong> Options protect against downside risk while allowing you to benefit from favorable movements!
+      </div>
+
+      <div class="flow-box">
+        <div><strong>Example:</strong> Exporter expects USD receipts</div>
+        <div>Buys a <span class="flow-highlight">PUT OPTION</span> at ₹83/USD</div>
+        <div style="margin-top:10px;"><span class="flow-safe">SCENARIO 1:</span> USD falls to ₹79 <span class="flow-arrow">→</span> <span class="flow-highlight">Exercise option</span> <span class="flow-arrow">→</span> Sell at ₹83 ✅</div>
+        <div><span class="flow-safe">SCENARIO 2:</span> USD rises to ₹87 <span class="flow-arrow">→</span> <span class="flow-highlight">Ignore option</span> <span class="flow-arrow">→</span> Sell at market ₹87 ✅</div>
+        <div style="margin-top:12px; color:#60a5fa; font-weight:900;">BEST OF BOTH WORLDS!</div>
+      </div>
+
+      <table>
+        <thead><tr><th>Advantages</th><th>Disadvantages</th></tr></thead>
+        <tbody>
+          <tr><td>✅ Flexibility (right, not obligation)</td><td>❌ Premium cost (like insurance)</td></tr>
+          <tr><td>✅ Protection with upside potential</td><td>❌ More complex</td></tr>
+          <tr><td>✅ Can be tailored to needs</td><td>❌ Premium is non-refundable</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- NATURAL HEDGING -->
+    <div class="question-box reveal">
+      <span class="method-badge badge-natural">Natural Hedging</span>
+      <h2>5. Natural Hedging</h2>
+      
+      <p>Natural hedging reduces exposure <strong>without using financial instruments</strong>.</p>
+
+      <div class="step-box">
+        <h3>Example</h3>
+        <p>A company:</p>
+        <ul>
+          <li><strong>Receives USD from exports</strong> → +USD inflow</li>
+          <li><strong>Pays USD for imports</strong> → −USD outflow</li>
+        </ul>
+        <p style="margin-top:12px;">The inflows and outflows <strong>offset each other naturally</strong>.</p>
+      </div>
+
+      <table>
+        <thead><tr><th>Advantages</th><th>Disadvantages</th></tr></thead>
+        <tbody>
+          <tr><td>✅ No extra financial cost</td><td>❌ Not always possible</td></tr>
+          <tr><td>✅ Simple</td><td>❌ Imperfect protection</td></tr>
+          <tr><td>✅ No derivatives needed</td><td>❌ Requires matching currency flows</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <hr />
+    <h1>📊 Comparison of Hedging Methods</h1>
+
+    <div class="table-wrap reveal">
+      <table>
+        <thead>
+          <tr>
+            <th>Method</th>
+            <th>Risk Protection</th>
+            <th>Flexibility</th>
+            <th>Cost</th>
+            <th>Best For</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Forward Contract</strong></td>
+            <td>High</td>
+            <td>Low</td>
+            <td>Moderate</td>
+            <td>Certainty needed</td>
+          </tr>
+          <tr>
+            <td><strong>Money Market Hedge</strong></td>
+            <td>High</td>
+            <td>Moderate</td>
+            <td>Interest Cost</td>
+            <td>When forwards unavailable</td>
+          </tr>
+          <tr>
+            <td><strong>Futures</strong></td>
+            <td>High</td>
+            <td>Low</td>
+            <td>Brokerage Cost</td>
+            <td>Large institutional hedges</td>
+          </tr>
+          <tr>
+            <td><strong>Options</strong></td>
+            <td>Moderate to High</td>
+            <td>Very High</td>
+            <td>Premium</td>
+            <td>Want flexibility</td>
+          </tr>
+          <tr>
+            <td><strong>Natural Hedge</strong></td>
+            <td>Partial</td>
+            <td>High</td>
+            <td>Low</td>
+            <td>Matching currency flows</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <hr />
+    <h1>💼 Importance of Hedging in Business</h1>
+
+    <p>Hedging helps businesses:</p>
+    <ul>
+      <li>Maintain stable profits</li>
+      <li>Avoid major exchange losses</li>
+      <li>Improve investor confidence</li>
+      <li>Plan future cash flows accurately</li>
+      <li>Reduce financial uncertainty</li>
+    </ul>
+
+    <hr />
+    <h1>📝 Practical ACCA-Style Example</h1>
+
+    <div class="step-box reveal">
+      <h3>Scenario</h3>
+      <p>An Indian company must pay <strong>USD 100,000 after 3 months</strong>.</p>
+      <ul>
+        <li>Current Spot Rate = ₹83/USD</li>
+        <li>3-Month Forward Rate = ₹84/USD</li>
+      </ul>
+    </div>
+
+    <div class="scenario-grid">
+      <div class="scenario-card bad">
+        <h4>❌ Without Hedging</h4>
+        <p>If rate becomes ₹88/USD</p>
+        <div class="big-num">₹88,00,000</div>
+        <p>Exposed to market risk</p>
+      </div>
+      <div class="scenario-card good">
+        <h4>✅ With Forward Hedge</h4>
+        <p>Payment fixed at ₹84/USD</p>
+        <div class="big-num">₹84,00,000</div>
+        <p><strong>Savings: ₹4,00,000</strong></p>
+      </div>
+    </div>
+
+    <blockquote class="reveal">
+      Company avoids additional loss of <strong>₹4,00,000</strong> by using forward hedge!
+    </blockquote>
+
+    <hr />
+    <h1>🎓 Key ACCA Examination Points</h1>
+
+    <div class="forex-tip reveal">
+      While answering ACCA questions, follow this structure:
+    </div>
+
+    <div class="timeline">
+      <div class="timeline-item">
+        <h4>Step 1</h4>
+        <p>Define hedging clearly</p>
+      </div>
+      <div class="timeline-item">
+        <h4>Step 2</h4>
+        <p>Explain the type of exposure</p>
+      </div>
+      <div class="timeline-item">
+        <h4>Step 3</h4>
+        <p>State the hedging instrument used</p>
+      </div>
+      <div class="timeline-item">
+        <h4>Step 4</h4>
+        <p>Show numerical calculations where required</p>
+      </div>
+      <div class="timeline-item">
+        <h4>Step 5</h4>
+        <p>Discuss advantages and disadvantages</p>
+      </div>
+      <div class="timeline-item">
+        <h4>Step 6</h4>
+        <p>Conclude with recommendation</p>
+      </div>
+    </div>
+
+    <hr />
+    <h1>📖 Important Terminology</h1>
+
+    <div class="table-wrap reveal">
+      <table>
+        <thead>
+          <tr>
+            <th>Term</th>
+            <th>Meaning</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Spot Rate</strong></td>
+            <td>Current exchange rate for immediate delivery</td>
+          </tr>
+          <tr>
+            <td><strong>Forward Rate</strong></td>
+            <td>Agreed exchange rate for future date</td>
+          </tr>
+          <tr>
+            <td><strong>Appreciation</strong></td>
+            <td>Currency value rises</td>
+          </tr>
+          <tr>
+            <td><strong>Depreciation</strong></td>
+            <td>Currency value falls</td>
+          </tr>
+          <tr>
+            <td><strong>Hedging</strong></td>
+            <td>Risk protection strategy</td>
+          </tr>
+          <tr>
+            <td><strong>Exposure</strong></td>
+            <td>Amount subject to currency risk</td>
+          </tr>
+          <tr>
+            <td><strong>Premium</strong></td>
+            <td>Cost of buying an option</td>
+          </tr>
+          <tr>
+            <td><strong>Strike Price</strong></td>
+            <td>Price at which option can be exercised</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <hr />
+    <h1>🎯 Final Understanding</h1>
+
+    <div class="flow-box reveal">
+      <div><strong>WITHOUT HEDGE</strong></div>
+      <div>Exchange rates fluctuate <span class="flow-arrow">↓</span></div>
+      <div><span class="flow-danger">Profits become uncertain</span> <span class="flow-arrow">↓</span></div>
+      <div><span class="flow-danger">Business risk increases</span></div>
+      <div style="margin-top:20px;"><strong>WITH HEDGE</strong></div>
+      <div>Exchange rate fixed/protected <span class="flow-arrow">↓</span></div>
+      <div><span class="flow-safe">Cash flows become stable</span> <span class="flow-arrow">↓</span></div>
+      <div><span class="flow-safe">Risk reduced</span></div>
+    </div>
+
+    <div class="info-box reveal">
+      <strong>One-Line ACCA Definition:</strong><br><br>
+      "Forex hedging is a risk management technique used to reduce the adverse impact of exchange rate fluctuations on future foreign currency transactions."
+    </div>
+
+    <hr />
+    <h1>🏁 Conclusion</h1>
+
+    <p>Forex hedging is an essential risk management technique used by businesses operating internationally. Exchange rate fluctuations can significantly affect profitability and cash flows.</p>
+
+    <p>By using methods such as:</p>
+    <ul>
+      <li>Forward contracts</li>
+      <li>Money market hedges</li>
+      <li>Futures</li>
+      <li>Options</li>
+      <li>Natural hedging</li>
+    </ul>
+
+    <p>Firms can reduce uncertainty and protect themselves from adverse currency movements.</p>
+
+    <div class="forex-tip reveal">
+      <strong>At ACCA level:</strong> Understanding both the theoretical concepts and practical application of hedging techniques is highly important for financial management and treasury-related questions.
+    </div>
+
+    <hr />
+    <div class="navigation-section">
+      <h2>📊 Explore Other Topics</h2>
+      <p>Continue your ACCA revision with other financial management topics.</p>
+      <button class="practice-button" onclick="showSection('wacc')" style="margin:10px 8px;">
+        📊 Risk-Adjusted WACC
+      </button>
+      <button class="practice-button" onclick="showSection('hedging')" style="margin:10px 8px;">
+        🛡️ Hedging
+      </button>
+      <button class="practice-button" onclick="showSection('dividend')" style="margin:10px 8px;">
+        💰 Dividend Policy
+      </button>
+    </div>
+
+  </div>
+  </div> <!-- end #forexSection -->
+
   <script>
     /* ============================================================
        SECTION SWITCHING
@@ -1698,17 +2324,21 @@
       const waccEl      = document.getElementById('waccSection');
       const hedgeEl     = document.getElementById('hedgingSection');
       const dividendEl  = document.getElementById('dividendSection');
+      const forexEl     = document.getElementById('forexSection');
       const waccBtn     = document.getElementById('waccNavBtn');
       const hedgeBtn    = document.getElementById('hedgingNavBtn');
       const dividendBtn = document.getElementById('dividendNavBtn');
+      const forexBtn    = document.getElementById('forexNavBtn');
 
       // Remove active from all
       waccEl.classList.remove('active');
       hedgeEl.classList.remove('active');
       dividendEl.classList.remove('active');
+      forexEl.classList.remove('active');
       waccBtn.classList.remove('active');
       hedgeBtn.classList.remove('active');
       dividendBtn.classList.remove('active');
+      forexBtn.classList.remove('active');
 
       // Add active to selected
       if (section === 'wacc') {
@@ -1720,6 +2350,9 @@
       } else if (section === 'dividend') {
         dividendEl.classList.add('active');
         dividendBtn.classList.add('active');
+      } else if (section === 'forex') {
+        forexEl.classList.add('active');
+        forexBtn.classList.add('active');
       }
 
       window.scrollTo({ top: 0, behavior: 'smooth' });
